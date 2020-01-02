@@ -1,0 +1,32 @@
+{
+  "name": "chapp2.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "concurrently": "^5.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.5.8",
+    "graphql-tools": "^4.0.6",
+    "mongodb": "^3.4.1"
+  },
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "debug": "nodemon --inspect server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
+  },
+  "keywords": [],
+  "author": "Mike Bendorf",
+  "license": "MIT"
+}
