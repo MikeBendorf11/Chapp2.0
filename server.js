@@ -7,8 +7,8 @@ app = express(),
   MongoClient = require('mongodb').MongoClient,
   //client = new MongoClient(process.env.MONGOCONN, { useNewUrlParser: true }),
   fs = require('fs')
-var database, collection
-const PORT = process.env.PORT || 4000
+var database, collection 
+const PORT = process.env.PORT || 4000 
 
 app.use(bodyParser.json());
 

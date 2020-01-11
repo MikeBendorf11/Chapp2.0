@@ -5,17 +5,27 @@
   //display: flex;
   flex-wrap: wrap;
 }
+.unitid__container{
+  border: 1px solid grey;
+  border-radius: 25%;
+  padding: 3px;
+}
+.checkbox__container{
+  span{
+    position: relative;
+    bottom: 3px;
+  }
+}
 .input__group{
   display: inline-block;
 }
 .input__container{
-  border: 1px solid black;
+  border: 1px solid grey;
+  border-radius: 10%;
   height: 38px;
-  width: auto;
-  svg{
-    position: relative;
-    top:0px
-  }
+  display: inline-block;
+  //width: auto;
+
 }
 input{
   border: none;
@@ -28,3 +38,16 @@ input:read-only{
   background-color: lightgrey;
 }
 
+.sentence__container{
+  border: 1px solid grey;
+  border-radius: 10%;
+  display: inline-block;
+  span {
+    //display: inline-block;
+    padding: 0 10px 0 0;
+    background-color: lightgrey;
+    font-size: 30px;
+
+  }
+
+}

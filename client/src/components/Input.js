@@ -2,7 +2,7 @@ import React from 'react';
 import Close from 'react-ionicons/lib/MdClose'
 import { observer } from "mobx-react"
 
-const log = console.log
+const log = console.log 
 
 @observer
 class Input extends React.Component {
@@ -23,7 +23,7 @@ class Input extends React.Component {
       <div className='input__container'>
         <input 
           value={value[idx]}
-          size={value[idx].length}
+          size={value[idx].length-1}
           onChange={e=>{value[idx]=e.target.value}}
           readOnly={this.state.readOnly}
           onDoubleClick={(e)=>{this.setState({readOnly: false})}}

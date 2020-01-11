@@ -5,7 +5,7 @@ class Unit {
   @observable definition
   @observable definition_alt
   @observable combinations
-  @observable pending
+  @observable passed
 
   constructor(unit){
     Object.keys(unit).forEach(k=>{
@@ -20,7 +20,7 @@ class Unit {
     this[key] = values
   }
   @computed get report(){
-      return JSON.stringify(this.definition, null, 2)
+      return JSON.stringify(this.passed, null, 2)
   }
 }
 

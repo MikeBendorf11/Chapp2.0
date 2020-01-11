@@ -1,7 +1,7 @@
 [{
   "id": 163,
   "learnedId": 501,
-  "pending": true,
+  "passed": true,
   "char": "非常",
   "pronunciation": [
     "fēi",
@@ -64,7 +64,7 @@
 },{
   "id": 5,
   "learnedId": 5,
-  "pending": false,
+  "passed": false,
   "char": "不",
   "pronunciation": [
     "bù"
@@ -76,7 +76,7 @@
   "definition_alt": []
 },{
   "id": 948,
-  "pending": true,
+  "passed": true,
   "char": "明显",
   "pronunciation": [],
   "combinations": [],
@@ -86,7 +86,7 @@
 {
   "id": 6,
   "learnedId": 6,
-  "pending": false,
+  "passed": false,
   "char": "在",
   "pronunciation": [
     "zài"
