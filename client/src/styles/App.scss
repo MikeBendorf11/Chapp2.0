@@ -1,0 +1,30 @@
+
+
+
+.App{
+  //display: flex;
+  flex-wrap: wrap;
+}
+.input__group{
+  display: inline-block;
+}
+.input__container{
+  border: 1px solid black;
+  height: 38px;
+  width: auto;
+  svg{
+    position: relative;
+    top:0px
+  }
+}
+input{
+  border: none;
+  font-size: 30px;
+}
+input[type=checkbox]{
+  flex: 20%
+}
+input:read-only{
+  background-color: lightgrey;
+}
+

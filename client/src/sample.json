@@ -1,0 +1,117 @@
+[{
+  "id": 163,
+  "learnedId": 501,
+  "pending": true,
+  "char": "非常",
+  "pronunciation": [
+    "fēi",
+    "cháng"
+  ],
+  "combinations": [
+    {
+      "combination": "非法",
+      "definition": "illegal"
+    },
+    {
+      "combination": "非要",
+      "definition": "definitely have to"
+    },
+    {
+      "combination": "无非",
+      "definition": "only"
+    },
+    {
+      "combination": "非同步",
+      "definition": "async"
+    },
+    {
+      "combination": "非常好玩",
+      "definition": "very funny"
+    },
+    {
+      "combination": "听过, 非常好听",
+      "definition": "have heard, very good sounds"
+    },
+    {
+      "combination": "你在国内工作好好的, 干吗非要到国外去呢?",
+      "definition": "you have a great local job, why must you go work overseas?"
+    },
+    {
+      "combination": "亚洲(yàzhōu)的女人之间的话题, 无非是猫",
+      "definition": "asian women between the topic, only is cats"
+    },
+    {
+      "combination": "口是心非",
+      "definition": "hypocrisy"
+    },
+    {
+      "combination": "无事真非",
+      "definition": "make trouble no reason"
+    },
+    {
+      "combination": "我是非常认真的",
+      "definition": "I'm very serious about it (*)"
+    }
+  ],
+  "definition": [
+    "not",
+    "normal"
+  ],
+  "definition_alt": [
+    "very much",
+    "extraordinary"
+  ]
+},{
+  "id": 5,
+  "learnedId": 5,
+  "pending": false,
+  "char": "不",
+  "pronunciation": [
+    "bù"
+  ],
+  "combinations": [],
+  "definition": [
+    "no"
+  ],
+  "definition_alt": []
+},{
+  "id": 948,
+  "pending": true,
+  "char": "明显",
+  "pronunciation": [],
+  "combinations": [],
+  "definition": [],
+  "definition_alt": []
+},
+{
+  "id": 6,
+  "learnedId": 6,
+  "pending": false,
+  "char": "在",
+  "pronunciation": [
+    "zài"
+  ],
+  "combinations": [
+    {
+      "combination": "在意",
+      "definition": "care about"
+    },
+    {
+      "combination": "实在",
+      "definition": "truly"
+    },
+    {
+      "combination": "#他说的那些话, 你别在意",
+      "definition": "The words he say, you get to think"
+    },
+    {
+      "combination": "她对他们实在关心得太过分了",
+      "definition": "She really cares too much about them"
+    }
+  ],
+  "definition": [
+    "be at",
+    "exist"
+  ],
+  "definition_alt": []
+}]
