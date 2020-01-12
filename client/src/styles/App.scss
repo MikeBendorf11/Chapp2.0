@@ -38,16 +38,29 @@ input:read-only{
   background-color: lightgrey;
 }
 
+.sentence__group{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
 .sentence__container{
+  flex: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
   border: 1px solid grey;
-  border-radius: 10%;
-  display: inline-block;
+  border-radius: 0 10px 10px 0;
   span {
-    //display: inline-block;
+    width: 90%;
     padding: 0 10px 0 0;
     background-color: lightgrey;
     font-size: 30px;
-
+  }
+  span:focus{
+    background-color: white;
+  }
+  svg{
+    width: 30px;
   }
 
 }

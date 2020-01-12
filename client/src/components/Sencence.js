@@ -21,8 +21,10 @@ class Sentence extends React.Component {
     var definition = unit[unitKey][idx].definition
 
     return (
-      <div>
-        <div className="sentence__container">
+      <div className="sentence__group">
+        <div className="sentence__container"
+          style={{width:(combination.length*20/Math.sqrt(combination.length))+'%'}}
+        >
           <span contentEditable={true}
             suppressContentEditableWarning={true}
             onPaste={this.pasteAsPlainText}
@@ -32,7 +34,9 @@ class Sentence extends React.Component {
             }}
           >{combination}</span><Close />
         </div>
-        <div className="sentence__container">
+        <div className="sentence__container"
+          style={{width:(combination.length*20/Math.sqrt(combination.length))+'%'}}
+        >
           <span contentEditable={true}
             suppressContentEditableWarning={true}
             onPaste={this.pasteAsPlainText}
