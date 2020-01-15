@@ -60,7 +60,7 @@ class App extends React.Component {
           })}
         </div>
         <br></br>
-        <div className="sentence__group">
+        <div className="sentences">
           {unit.combinations.map((c,i)=>{
             return <div>
               <Sentence 

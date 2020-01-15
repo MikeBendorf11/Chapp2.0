@@ -39,28 +39,33 @@ input:read-only{
 }
 
 .sentence__group{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  //display:flex;
 }
 .sentence__container{
-  flex: 1;
-  display: flex;
-  flex-wrap: nowrap;
+  margin: 0 10px 0 0;
+  display: inline-block;
+  position: relative;
   align-items: center;
   border: 1px solid grey;
   border-radius: 0 10px 10px 0;
   span {
-    width: 90%;
-    padding: 0 10px 0 0;
-    background-color: lightgrey;
+    display: inline-block;
+    max-width: 90%;
+    padding: 0 25px 0 0;
+    background-color: rgba(211, 211, 211, 0.692);
     font-size: 30px;
+    border-radius: 0 10px 10px 0;
   }
   span:focus{
     background-color: white;
   }
   svg{
-    width: 30px;
+    height: 100%;
+    border-radius: 0 10px 10px 0;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
 }
