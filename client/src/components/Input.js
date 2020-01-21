@@ -2,7 +2,8 @@ import React from 'react';
 import Close from 'react-ionicons/lib/MdClose'
 import { observer } from "mobx-react"
 
-const log = console.log 
+var log = console.log 
+log(); console.clear()
 
 @observer
 class Input extends React.Component {
@@ -18,20 +19,18 @@ class Input extends React.Component {
     var value = unit[unitKey]
     var idx = this.props.index
     
-    
-    return ( 
-      <div className='input__container'>
-        <input 
-          value={value[idx]}
-          size={value[idx].length-1}
-          onChange={e=>{value[idx]=e.target.value}}
-          readOnly={this.state.readOnly}
-          onDoubleClick={(e)=>{this.setState({readOnly: false})}}
-          onBlur={_=>this.setState({readOnly: true})}
-        ></input><Close onClick={_=>{
-              unit.swapArray(unitKey,value.filter(v=>v!=value[idx]) )
-            }
-          }/>          
+    return (
+      <div className="defpron__container">
+        <span contentEditable={true}
+          suppressContentEditableWarning={true}
+          onPaste={this.pasteAsPlainText}
+          onInput={e => {
+            if (e.keyCode === 13) e.returnValue = false
+            log(e.target.innerHTML.replace(/&nbsp;/g, ''))
+          }}
+        >{value[idx]}</span><Close onClick={_=>{
+          unit.swapArray(unitKey, value.filter(c=>c!==value[idx]) )
+        }}/>
       </div>
     )
   }

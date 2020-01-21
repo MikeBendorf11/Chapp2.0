@@ -1,5 +1,6 @@
 import {observable, computed, autorun, action} from 'mobx' 
 
+/**todo: add method to sort ascending, should be saved as such */
 class Unit {
   @observable pronunciation
   @observable definition
@@ -12,7 +13,7 @@ class Unit {
       this[k]=unit[k]
     })
     autorun(() => {
-      console.log(this.report)
+      //console.log(this.report)
       //console.log(this.todos[0])
     }); 
   }

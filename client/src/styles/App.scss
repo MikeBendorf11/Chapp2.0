@@ -41,7 +41,9 @@ input:read-only{
 .sentence__group{
   //display:flex;
 }
-.sentence__container{
+.combination__container,
+.definition__container,
+.defpron__container{
   margin: 0 10px 0 0;
   display: inline-block;
   position: relative;

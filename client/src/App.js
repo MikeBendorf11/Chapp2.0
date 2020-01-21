@@ -2,19 +2,41 @@ import React from 'react';
 import './styles/App.scss'
 import units from './sample'
 import Input from './components/Input'
-import Sentence from './components/Sencence'
+import NestedInput from './components/NestedInput'
 import Unit from './models/Unit'
 import { observer } from "mobx-react"
+import ViewControl from './components/ViewControl'
 
-const log = console.log
+var log = console.log 
+log(); console.clear()
+
 var unit = new Unit(units[0])
-//unit.definition =  ['asd', 'dfdf']
-//log(unit)
+
 @observer
 class App extends React.Component {
+  getCombs=()=>{
+    var shortGroup = [],
+        longGroup = [] ,
+        key = 20
+    unit.combinations.map((c,i)=>{
+      var ipt = (<NestedInput 
+          key={key+=20}
+          unit={unit}
+          unitKey={'combinations'}
+          index={i}
+        />)
+      if(c.combination.length<5) shortGroup.push(ipt)
+      else longGroup.push(ipt); return ''
+    })
+    return ({
+      short: shortGroup,
+      long: longGroup
+    }) 
+  }
   render() {
-    var key = 0
-
+    var key = 0,
+        combs = this.getCombs()
+    
     return (
       <div className="App">
         <span className="unitid__container" key={key}>{unit.id}</span>
@@ -24,9 +46,7 @@ class App extends React.Component {
             onClick={e => { unit.passed = e.target.checked }}
           ></input>
           <span>{unit.passed ? 'passed' : 'pending'}</span>
-
         </div>
-      
         <div className="input__group">
           {unit.pronunciation.map((d, i) => {
             return <Input
@@ -59,18 +79,12 @@ class App extends React.Component {
             </Input>
           })}
         </div>
-        <br></br>
+        <br></br><p>COMBS</p>
         <div className="sentences">
-          {unit.combinations.map((c,i)=>{
-            return <div>
-              <Sentence 
-                key={key+=20}
-                unit={unit}
-                unitKey={'combinations'}
-                index={i}
-              />
-            </div>
-          })}
+          <p>short</p>
+          <ViewControl className="senteces--short">{combs.short}</ViewControl>
+          <p>long</p>
+          <ViewControl className="senteces--long">{combs.long}</ViewControl>
         </div>
 
 
