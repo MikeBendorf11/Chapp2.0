@@ -4,13 +4,17 @@ import units from './sample'
 import Input from './components/Input'
 import NestedInput from './components/NestedInput'
 import Unit from './models/Unit'
+// import View from './models/View'
 import { observer } from "mobx-react"
 import ViewControl from './components/ViewControl'
 
 var log = console.log 
 log(); console.clear()
 
-var unit = new Unit(units[0])
+var unit = new Unit(units[0])//,
+    // view = new View(),
+    // showingShort = view.shortComb,
+    // showingLong = view.longComb
 
 @observer
 class App extends React.Component {
@@ -18,6 +22,7 @@ class App extends React.Component {
     var shortGroup = [],
         longGroup = [] ,
         key = 20
+        
     unit.combinations.map((c,i)=>{
       var ipt = (<NestedInput 
           key={key+=20}
@@ -25,7 +30,9 @@ class App extends React.Component {
           unitKey={'combinations'}
           index={i}
         />)
-      if(c.combination.length<5) shortGroup.push(ipt)
+      if(c.combination.length<5){
+         shortGroup.push(ipt)
+        }
       else longGroup.push(ipt); return ''
     })
     return ({
@@ -82,9 +89,13 @@ class App extends React.Component {
         <br></br><p>COMBS</p>
         <div className="sentences">
           <p>short</p>
-          <ViewControl className="senteces--short">{combs.short}</ViewControl>
+          <ViewControl className="senteces--short">
+            {combs.short}
+          </ViewControl>
           <p>long</p>
-          <ViewControl className="senteces--long">{combs.long}</ViewControl>
+          <ViewControl className="senteces--long">
+            {combs.long}
+          </ViewControl>
         </div>
 
 
