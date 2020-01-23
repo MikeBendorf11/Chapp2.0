@@ -1,5 +1,5 @@
 import React from 'react';
-import Close from 'react-ionicons/lib/MdClose'
+// import Close from 'react-ionicons/lib/MdClose'
 import { observer } from "mobx-react"
 
 var log = console.log 
@@ -28,9 +28,10 @@ class Input extends React.Component {
             if (e.keyCode === 13) e.returnValue = false
             log(e.target.innerHTML.replace(/&nbsp;/g, ''))
           }}
-        >{value[idx]}</span><Close onClick={_=>{
+        >{value[idx]}</span>
+        {/* <Close onClick={_=>{
           unit.swapArray(unitKey, value.filter(c=>c!==value[idx]) )
-        }}/>
+        }}/> */}
       </div>
     )
   }

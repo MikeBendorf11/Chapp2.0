@@ -12,7 +12,8 @@ export default class ViewControl extends React.Component{
   constructor(){
     super()
     this.state = {
-      showing: 0
+      showing: 0,
+
     }
   }
   componentDidMount(){
@@ -28,12 +29,44 @@ export default class ViewControl extends React.Component{
       default: log('Wrong Direction')
     }
   }
+  toggleDefinition=()=>{
+    document.querySelectorAll('.definition__container')
+            .forEach(el=>{
+              if(el.style.display==='inline-block')
+                el.style.display='none'
+            else el.style.display='inline-block'
+            })
+  }
+  toggleSentGroup=(target1, target2)=>{
+    
+    if(target1.style.display==='none'){
+      target1.style.display='inline'
+    } else {target1.style.display = 'none'
+    target2.style.display="inline"}
+  }
   render(){
+    var shtIsDisabled = this.props.disabled==='short'? true: false
+    var lngIsDisabled = this.props.disabled==='long'? true: false
     return(
-      <div className="view-control-box">
+      <div className={"view-control-box "+ this.props.className}>
+        <button disabled={shtIsDisabled} onClick={e=>{
+          this.toggleSentGroup(
+            document.querySelector('div[class*=sentences--long]'),
+            document.querySelector('div[class*=sentences--short]'))
+            document.querySelectorAll('.definition__container')
+              .forEach(el=>{el.style.display='none'})
+        }}>short</button>
+        <button disabled={lngIsDisabled} onClick={e=>{
+          this.toggleSentGroup(
+            document.querySelector('div[class*=sentences--short]'),
+            document.querySelector('div[class*=sentences--long]'))   
+            document.querySelectorAll('.definition__container')
+              .forEach(el=>{el.style.display='none'})
+        }}>long</button>
         <button onClick={_=>this.roulete('prev')}><MdArrowUp/></button>
         <button onClick={_=>this.roulete('next')}><MdArrowDown/></button>
-        <button><MdEye/></button>
+        <button 
+          onClick={this.toggleDefinition}><MdEye/></button>
         <button><MdAdd/></button>
         <button><MdRemove/></button>
         {this.props.children[this.state.showing]}

@@ -88,12 +88,11 @@ class App extends React.Component {
         </div>
         <br></br><p>COMBS</p>
         <div className="sentences">
-          <p>short</p>
-          <ViewControl className="senteces--short">
+          
+          <ViewControl className="sentences--short" disabled="short">
             {combs.short}
-          </ViewControl>
-          <p>long</p>
-          <ViewControl className="senteces--long">
+          </ViewControl>          
+          <ViewControl className="sentences--long" disabled="long">
             {combs.long}
           </ViewControl>
         </div>

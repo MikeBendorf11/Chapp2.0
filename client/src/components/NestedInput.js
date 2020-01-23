@@ -1,5 +1,5 @@
 import React from 'react';
-import Close from 'react-ionicons/lib/MdClose'
+// import Close from 'react-ionicons/lib/MdClose'
 import { observer } from "mobx-react"
 
 const log = console.log
@@ -28,9 +28,7 @@ class NestedInput extends React.Component {
               if (e.keyCode === 13) e.returnValue = false
               log(e.target.innerHTML.replace(/&nbsp;/g, ''))
             }}
-          >{combination}</span><Close onClick={_=>{
-            unit.swapArray(unitKey, unit.combinations.filter(c=>c.combination!==combination) )
-          }}/>
+          >{combination}</span>
         </div>
         <div className="definition__container">
           <span contentEditable={true}
@@ -40,12 +38,12 @@ class NestedInput extends React.Component {
               if (e.keyCode === 13) e.returnValue = false
               //log(e.target.innerHTML.replace(/&nbsp;/g, ''))
             }}
-          >{definition}</span><Close onClick={_=>{
+          >{definition}</span>
+          {/* <Close onClick={_=>{
             unit.swapArray(unitKey, unit.combinations.filter(c=>c.definition!==definition) )
-          }}/>
+          }}/> */}
         </div>
       </div>
-
     )
   }
 }
