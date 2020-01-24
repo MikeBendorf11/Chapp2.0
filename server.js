@@ -62,7 +62,8 @@ app.post('/load', (rq, rs) => {
 app.post('/hanzi*', (rq, rs) => {
   console.log(rq.params[0])
   if (rq.url == '/hanzi/all') {
-    rs.json(JSON.parse(fs.readFileSync('hanzi-writer/strokes-subtlex-1500.json.min')))
+    rs.json(JSON.parse(fs.readFileSync(
+      'hanzi-writer/strokes-subtlex-1500.json.min')))
   } else {
     let char = rq.params[0].replace('/', '')
     rs.json(JSON.parse(fs.readFileSync('hanzi-writer/' + char + '.json')))

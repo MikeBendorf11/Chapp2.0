@@ -38,7 +38,6 @@ export default class ViewControl extends React.Component{
             })
   }
   toggleSentGroup=(target1, target2)=>{
-    
     if(target1.style.display==='none'){
       target1.style.display='inline'
     } else {target1.style.display = 'none'

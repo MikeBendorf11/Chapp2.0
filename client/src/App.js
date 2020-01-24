@@ -7,6 +7,7 @@ import Unit from './models/Unit'
 // import View from './models/View'
 import { observer } from "mobx-react"
 import ViewControl from './components/ViewControl'
+import Hzwriter from './components/hzwriter'
 
 var log = console.log 
 log(); console.clear()
@@ -47,7 +48,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <span className="unitid__container" key={key}>{unit.id}</span>
-        <span key={key += 1}>{unit.char}</span>
+        <Hzwriter unit={unit}/>
         <div className="checkbox__container">
           <input type="checkbox" value={unit.passed}
             onClick={e => { unit.passed = e.target.checked }}
