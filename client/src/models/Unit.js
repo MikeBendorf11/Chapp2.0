@@ -1,5 +1,7 @@
 import {observable, computed, autorun, action} from 'mobx' 
 
+var log = console.log 
+log(); console.clear()
 /**todo: add method to sort ascending, should be saved as such */
 class Unit {
   @observable pronunciation
@@ -13,15 +15,16 @@ class Unit {
       this[k]=unit[k]
     })
     autorun(() => {
-      //console.log(this.report)
-      //console.log(this.todos[0])
+      //log(this.report)
+      
     }); 
   }
   @action swapArray(key, values){
     this[key] = values
+    
   }
   @computed get report(){
-      return JSON.stringify(this.passed, null, 2)
+      return JSON.stringify(this.passed)
   }
 }
 

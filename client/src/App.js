@@ -8,6 +8,8 @@ import Unit from './models/Unit'
 import { observer } from "mobx-react"
 import ViewControl from './components/ViewControl'
 import Hzwriter from './components/hzwriter'
+import MdNext from 'react-ionicons/lib/IosArrowForward'
+import MdPrev from 'react-ionicons/lib/IosArrowBack'
 
 var log = console.log 
 log(); console.clear()
@@ -47,15 +49,21 @@ class App extends React.Component {
     
     return (
       <div className="App">
-        <span className="unitid__container" key={key}>{unit.id}</span>
+        <div className="lesson--controls">
+          <MdPrev onClick={e=>log(e)}/>
+            <span className="unitid__container" key={key}>{unit.id}</span>
+          <MdNext/>
+        </div>
+        
+        
         <Hzwriter unit={unit}/>
         <div className="checkbox__container">
-          <input type="checkbox" value={unit.passed}
-            onClick={e => { unit.passed = e.target.checked }}
+          <input type="checkbox" checked={unit.passed}
+            onChange={e => { unit.passed = e.target.checked }}
           ></input>
           <span>{unit.passed ? 'passed' : 'pending'}</span>
         </div>
-        <div className="input__group">
+        {/* <div className="input__group">
           {unit.pronunciation.map((d, i) => {
             return <Input
               key={key += 10}
@@ -64,45 +72,53 @@ class App extends React.Component {
               index={i}>
             </Input>
           })}
+        </div> */}
+        <br></br>
+        <div className="input__group">
+          <label onClick={e=>{
+            e.target.style.display='none'
+            e.target.nextSibling.style.display='block'
+          }}>definitions</label>
+          <div className="definitions">
+            {unit.definition.map((d, i) => {
+              return <Input
+                key={key += 10}
+                unit={unit}
+                unitKey={'definition'}
+                index={i}>
+              </Input>
+            })}
+          </div>
         </div>
         <br></br>
         <div className="input__group">
-          {unit.definition.map((d, i) => {
-            return <Input
-              key={key += 10}
-              unit={unit}
-              unitKey={'definition'}
-              index={i}>
-            </Input>
-          })}
-        </div>
-        <br></br>
-        <div className="input__group">
+        <label onClick={e=>{
+          e.target.style.display='none'
+            e.target.nextSibling.style.display='block'
+          }}>other definitions</label>
+        <div className="definitions">
           {unit.definition_alt.map((d, i) => {
-            return <Input
-              key={key += 10}
-              unit={unit}
-              unitKey={'definition_alt'}
-              index={i}>
-            </Input>
-          })}
+              return <Input 
+                key={key += 10}
+                unit={unit}
+                unitKey={'definition_alt'}
+                index={i}>
+              </Input>
+            })}
         </div>
-        <br></br><p>COMBS</p>
-        <div className="sentences">
           
-          <ViewControl className="sentences--short" disabled="short">
+        </div>
+        <div className="sentences"> 
+          <ViewControl unit={unit} className="sentences--short" disabled="short">
             {combs.short}
           </ViewControl>          
-          <ViewControl className="sentences--long" disabled="long">
+          <ViewControl unit={unit} className="sentences--long" disabled="long">
             {combs.long}
           </ViewControl>
         </div>
-
-
       </div>
     );
   }
-
 }
 
 export default App;

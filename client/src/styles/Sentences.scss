@@ -1,0 +1,69 @@
+.sentences{
+  margin: 10px 0;
+}
+.sentence__group{
+  //display:flex;
+}
+.combination__container,
+.combdef__container,
+.defpron__container{
+  margin: 0 10px 0 0;
+  display: inline-block;
+  position: relative;
+  align-items: center;
+  border: 1px solid grey;
+  border-radius: 10px;
+  span {
+    display: inline-block;
+    max-width: 100%;
+    padding: 0 15px 0;
+    background-color: rgba(211, 211, 211, 0.692);
+    font-size: 30px;
+    border-radius: 10px;
+  }
+  span:focus{
+    background-color: white;
+  }
+  svg{
+    height: 100%;
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.definition__container{
+  display: none;
+}
+.view-control-box{
+  button{
+    height: 30px;
+    width: 46px;
+    margin: -2px;
+    border: 1px solid lightgray;
+  }
+  button:nth-child(1), button:nth-child(2){
+    position: relative;
+    bottom: 5px;
+    left:-3px;
+  }
+  button:nth-child(1){
+    border-radius: 10px  0 0 10px;
+  }
+  button:nth-child(7){
+    
+    border-radius: 0 10px 10px 0;
+  }
+  button:disabled{
+    svg{
+      fill: grey;
+    }
+    
+  }
+}
+
+.sentences--long{
+  display: none
+}

@@ -4,15 +4,17 @@ import MdArrowDown from 'react-ionicons/lib/MdArrowDown'
 import MdEye from 'react-ionicons/lib/MdEye'
 import MdAdd from 'react-ionicons/lib/MdAdd'
 import MdRemove from 'react-ionicons/lib/MdRemove'
+import { observer } from "mobx-react"
 
 var log = console.log 
 log(); console.clear()
 
-export default class ViewControl extends React.Component{
+@observer
+class ViewControl extends React.Component{
   constructor(){
     super()
     this.state = {
-      showing: 0,
+      showing: -1, //starts hidding for lesson review
 
     }
   }
@@ -43,9 +45,16 @@ export default class ViewControl extends React.Component{
     } else {target1.style.display = 'none'
     target2.style.display="inline"}
   }
+  filterRemove(a, b){
+    log(JSON.stringify(a)!==JSON.stringify(b))
+    return JSON.stringify(a)!==JSON.stringify(b)
+  }
   render(){
-    var shtIsDisabled = this.props.disabled==='short'? true: false
-    var lngIsDisabled = this.props.disabled==='long'? true: false
+    const shtIsDisabled = this.props.disabled==='short'? true: false, 
+          lngIsDisabled = this.props.disabled==='long'? true: false, 
+          unit = this.props.unit;
+    var disabledBeforeStart = this.state.showing === -1
+    
     return(
       <div className={"view-control-box "+ this.props.className}>
         <button disabled={shtIsDisabled} onClick={e=>{
@@ -64,12 +73,19 @@ export default class ViewControl extends React.Component{
         }}>long</button>
         <button onClick={_=>this.roulete('prev')}><MdArrowUp/></button>
         <button onClick={_=>this.roulete('next')}><MdArrowDown/></button>
-        <button 
+        <button disabled={disabledBeforeStart} 
           onClick={this.toggleDefinition}><MdEye/></button>
         <button><MdAdd/></button>
-        <button><MdRemove/></button>
+        <button disabled={disabledBeforeStart}><MdRemove onClick={_=>{
+            unit.swapArray('combinations', 
+              unit.combinations.filter(c=>
+                JSON.stringify(c)!==JSON.stringify(unit.combinations[this.state.showing]))) 
+        }}
+        /></button>
         {this.props.children[this.state.showing]}
       </div>
     )
   }
 }
+
+export default ViewControl

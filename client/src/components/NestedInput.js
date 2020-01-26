@@ -30,7 +30,7 @@ class NestedInput extends React.Component {
             }}
           >{combination}</span>
         </div>
-        <div className="definition__container">
+        <div className="combdef__container">
           <span contentEditable={true}
             suppressContentEditableWarning={true}
             onPaste={this.pasteAsPlainText}

@@ -13,8 +13,24 @@
     bottom: 3px;
   }
 }
+.lesson--controls{
+  display: flex;
+  svg{
+    flex:30%
+  }
+}
 .input__group{
   display: inline-block;
+  margin: 2px;
+  label{
+    display: block;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 5px;
+  }
+  .definitions{
+    display: none;
+  }
 }
 .input__container{
   border: 1px solid grey;
@@ -35,53 +51,12 @@ input:read-only{
   background-color: lightgrey;
 }
 
-.sentence__group{
-  //display:flex;
-}
-.combination__container,
-.definition__container,
-.defpron__container{
-  margin: 0 10px 0 0;
-  display: inline-block;
-  position: relative;
-  align-items: center;
-  border: 1px solid grey;
-  border-radius: 10px;
-  span {
-    display: inline-block;
-    max-width: 100%;
-    padding: 0 15px 0;
-    background-color: rgba(211, 211, 211, 0.692);
-    font-size: 30px;
-    border-radius: 10px;
-  }
-  span:focus{
-    background-color: white;
-  }
-  svg{
-    height: 100%;
-    border-radius: 10px;
-    background-color: white;
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-}
+@import './Sentences.scss';
 
-.definition__container{
-  display: none;
-}
-.view-control-box{
-  button{
-    height: 30px;
-    width: 46px;
+.hzwriter__links{
+  color: blue;
+  .link{
+    display: inline;
+    cursor: pointer;
   }
-  button:nth-child(1), button:nth-child(2){
-    position: relative;
-    bottom: 5px;
-  }
-}
-
-.sentences--long{
-  display: none
 }
