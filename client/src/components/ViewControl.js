@@ -32,7 +32,7 @@ class ViewControl extends React.Component{
     }
   }
   toggleDefinition=()=>{
-    document.querySelectorAll('.definition__container')
+    document.querySelectorAll('.combdef__container')
             .forEach(el=>{
               if(el.style.display==='inline-block')
                 el.style.display='none'
@@ -61,14 +61,14 @@ class ViewControl extends React.Component{
           this.toggleSentGroup(
             document.querySelector('div[class*=sentences--long]'),
             document.querySelector('div[class*=sentences--short]'))
-            document.querySelectorAll('.definition__container')
+            document.querySelectorAll('.combdef__container')
               .forEach(el=>{el.style.display='none'})
         }}>short</button>
         <button disabled={lngIsDisabled} onClick={e=>{
           this.toggleSentGroup(
             document.querySelector('div[class*=sentences--short]'),
             document.querySelector('div[class*=sentences--long]'))   
-            document.querySelectorAll('.definition__container')
+            document.querySelectorAll('.combdef__container')
               .forEach(el=>{el.style.display='none'})
         }}>long</button>
         <button onClick={_=>this.roulete('prev')}><MdArrowUp/></button>

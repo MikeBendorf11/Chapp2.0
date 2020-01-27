@@ -20,7 +20,7 @@ class Input extends React.Component {
     var idx = this.props.index
     
     return (
-      <div className="defpron__container">
+      <div className="definition__container">
         <span contentEditable={true}
           suppressContentEditableWarning={true}
           onPaste={this.pasteAsPlainText}

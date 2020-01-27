@@ -50,19 +50,20 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="lesson--controls">
-          <MdPrev onClick={e=>log(e)}/>
-            <span className="unitid__container" key={key}>{unit.id}</span>
-          <MdNext/>
+          
+          <MdPrev fontSize={'30px'} 
+            onClick={e=>{log(e)}}/>
+            <div className="unitid__container">
+              <span  key={key}>{unit.id}&nbsp;</span><input type="checkbox" checked={unit.passed}
+              onChange={e => { unit.passed = e.target.checked }}
+            ></input>
+            </div>
+          <MdNext fontSize={'30px'}
+            onClick={e=>{log(e)}}/>
         </div>
-        
         
         <Hzwriter unit={unit}/>
-        <div className="checkbox__container">
-          <input type="checkbox" checked={unit.passed}
-            onChange={e => { unit.passed = e.target.checked }}
-          ></input>
-          <span>{unit.passed ? 'passed' : 'pending'}</span>
-        </div>
+
         {/* <div className="input__group">
           {unit.pronunciation.map((d, i) => {
             return <Input

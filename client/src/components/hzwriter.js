@@ -35,7 +35,7 @@ export default class hzwriter extends React.Component {
   render() {
     var unit = this.props.unit
     return (
-      <div>
+      <div className="hzwriter__container">
         <svg id="hzchar" xmlns="http://www.w3.org/2000/svg" width="230" height="230" >
           <line x1="0" y1="0" x2="230" y2="230" stroke="#DDD" />
           <line x1="230" y1="0" x2="0" y2="230" stroke="#DDD" />

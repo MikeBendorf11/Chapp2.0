@@ -4,14 +4,15 @@
 }
 .unitid__container{
   border: 1px solid grey;
-  border-radius: 25%;
-  padding: 3px;
-}
-.checkbox__container{
+  border-radius: 25px;
+  padding: 5px 10px;
   span{
     position: relative;
-    bottom: 3px;
+    bottom: 2px;
   }
+}
+input[type=checkbox]{
+  transform: scale(1.7);
 }
 .lesson--controls{
   display: flex;
@@ -30,6 +31,10 @@
   }
   .definitions{
     display: none;
+    .definition__container{
+      font-size: 20px;
+    }
+    
   }
 }
 .input__container{
@@ -44,19 +49,32 @@ input{
   border: none;
   font-size: 30px;
 }
-input[type=checkbox]{
-  flex: 20%
-}
+
 input:read-only{
   background-color: lightgrey;
 }
 
 @import './Sentences.scss';
 
+.hzwriter__container{
+  margin: 0 auto;
+}
+
+#hzchar{
+  display: block;
+  margin: auto;
+}
 .hzwriter__links{
+  
+  
+  margin:10px 0 0 0;
+  //padding: 0 25%;
+  text-align: center;
   color: blue;
   .link{
+    flex:1;
     display: inline;
+    font-size: 30px;
     cursor: pointer;
   }
 }

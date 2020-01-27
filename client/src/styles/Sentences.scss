@@ -2,23 +2,24 @@
   margin: 10px 0;
 }
 .sentence__group{
-  //display:flex;
+  margin: 10px 0;
 }
 .combination__container,
 .combdef__container,
-.defpron__container{
+.defpron__container,
+.definition__container{
   margin: 0 10px 0 0;
   display: inline-block;
   position: relative;
   align-items: center;
   border: 1px solid grey;
   border-radius: 10px;
+  font-size: 30px;
   span {
     display: inline-block;
     max-width: 100%;
     padding: 0 15px 0;
     background-color: rgba(211, 211, 211, 0.692);
-    font-size: 30px;
     border-radius: 10px;
   }
   span:focus{
@@ -34,7 +35,9 @@
   }
 }
 
-.definition__container{
+.combdef__container{
+  margin:5px 0;
+  font-size: 20px;
   display: none;
 }
 .view-control-box{

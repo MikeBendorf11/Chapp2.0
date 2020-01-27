@@ -34,14 +34,8 @@ class NestedInput extends React.Component {
           <span contentEditable={true}
             suppressContentEditableWarning={true}
             onPaste={this.pasteAsPlainText}
-            onInput={e => {
-              if (e.keyCode === 13) e.returnValue = false
-              //log(e.target.innerHTML.replace(/&nbsp;/g, ''))
-            }}
+            onInput={e => {if (e.keyCode === 13) e.returnValue = false }}
           >{definition}</span>
-          {/* <Close onClick={_=>{
-            unit.swapArray(unitKey, unit.combinations.filter(c=>c.definition!==definition) )
-          }}/> */}
         </div>
       </div>
     )
