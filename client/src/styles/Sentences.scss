@@ -1,5 +1,8 @@
 .sentences{
-  margin: 10px 0;
+  position: relative;
+  left: 4px;
+  width: 95%;
+  margin: 10px auto;
 }
 .sentence__group{
   margin: 10px 0;
@@ -12,14 +15,14 @@
   display: inline-block;
   position: relative;
   align-items: center;
-  border: 1px solid grey;
+  border: 1px solid rgb(163, 162, 162);
   border-radius: 10px;
   font-size: 30px;
   span {
     display: inline-block;
     max-width: 100%;
     padding: 0 15px 0;
-    background-color: rgba(211, 211, 211, 0.692);
+    background-color: rgba(211, 211, 211, 0.328);
     border-radius: 10px;
   }
   span:focus{
@@ -41,6 +44,9 @@
   display: none;
 }
 .view-control-box{
+  display: block;
+  margin: 18px 0;
+  text-align: center;
   button{
     height: 30px;
     width: 46px;
@@ -67,6 +73,8 @@
   }
 }
 
+
 .sentences--long{
-  display: none
+  display: none;
+  
 }

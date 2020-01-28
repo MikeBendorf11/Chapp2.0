@@ -21,13 +21,15 @@ input[type=checkbox]{
   }
 }
 .input__group{
-  display: inline-block;
-  margin: 2px;
-  label{
-    display: block;
+  width: 95%;
+  margin: 0 auto 12px;
+  text-align: center;
+  label{ 
+    //display: block;
+    margin: 0 5px;
     border: 1px solid grey;
     border-radius: 10px;
-    padding: 5px;
+    padding: 2px 5px;
   }
   .definitions{
     display: none;
@@ -45,14 +47,7 @@ input[type=checkbox]{
   //width: auto;
 
 }
-input{
-  border: none;
-  font-size: 30px;
-}
 
-input:read-only{
-  background-color: lightgrey;
-}
 
 @import './Sentences.scss';
 

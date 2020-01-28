@@ -91,7 +91,7 @@ class App extends React.Component {
             })}
           </div>
         </div>
-        <br></br>
+        
         <div className="input__group">
         <label onClick={e=>{
           e.target.style.display='none'

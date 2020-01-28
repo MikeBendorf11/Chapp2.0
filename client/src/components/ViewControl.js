@@ -41,9 +41,9 @@ class ViewControl extends React.Component{
   }
   toggleSentGroup=(target1, target2)=>{
     if(target1.style.display==='none'){
-      target1.style.display='inline'
+      target1.style.display='block'
     } else {target1.style.display = 'none'
-    target2.style.display="inline"}
+    target2.style.display="block"}
   }
   filterRemove(a, b){
     log(JSON.stringify(a)!==JSON.stringify(b))
@@ -57,6 +57,7 @@ class ViewControl extends React.Component{
     
     return(
       <div className={"view-control-box "+ this.props.className}>
+        
         <button disabled={shtIsDisabled} onClick={e=>{
           this.toggleSentGroup(
             document.querySelector('div[class*=sentences--long]'),
