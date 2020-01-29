@@ -29,9 +29,6 @@ class Input extends React.Component {
             log(e.target.innerHTML.replace(/&nbsp;/g, ''))
           }}
         >{value[idx]}</span>
-        {/* <Close onClick={_=>{
-          unit.swapArray(unitKey, value.filter(c=>c!==value[idx]) )
-        }}/> */}
       </div>
     )
   }

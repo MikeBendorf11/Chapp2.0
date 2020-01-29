@@ -4,7 +4,6 @@ import units from './sample'
 import Input from './components/Input'
 import NestedInput from './components/NestedInput'
 import Unit from './models/Unit'
-// import View from './models/View'
 import { observer } from "mobx-react"
 import ViewControl from './components/ViewControl'
 import Hzwriter from './components/hzwriter'
@@ -15,9 +14,6 @@ var log = console.log
 log(); console.clear()
 
 var unit = new Unit(units[0])//,
-    // view = new View(),
-    // showingShort = view.shortComb,
-    // showingLong = view.longComb
 
 @observer
 class App extends React.Component {
@@ -38,17 +34,21 @@ class App extends React.Component {
         }
       else longGroup.push(ipt); return ''
     })
-    return ({
+    return ({ 
       short: shortGroup,
       long: longGroup
     }) 
+  }
+  componentDidMount(){
+    document.body.style.background =  `url(/svg/${Math.floor(Math.random() * 10)+1}.svg)`
+    document.body.style.backgroundSize= 'cover'
   }
   render() {
     var key = 0,
         combs = this.getCombs()
     
-    return (
-      <div className="App">
+    return ( 
+      <div className="App" >
         <div className="lesson--controls">
           
           <MdPrev fontSize={'30px'} 
@@ -88,7 +88,7 @@ class App extends React.Component {
                 unitKey={'definition'}
                 index={i}>
               </Input>
-            })}
+            })} 
           </div>
         </div>
         
@@ -117,7 +117,8 @@ class App extends React.Component {
             {combs.long}
           </ViewControl>
         </div>
-      </div>
+        <div id="paper"></div>
+      </div>  
     );
   }
 }

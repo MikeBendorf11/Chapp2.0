@@ -1,8 +1,14 @@
+body{
+  margin: 0
+}
+
 .App{
   //display: flex;
   flex-wrap: wrap;
+  height: 100vh
 }
 .unitid__container{
+  background-color: rgba(211, 211, 211, 0.828);
   border: 1px solid grey;
   border-radius: 25px;
   padding: 5px 10px;
@@ -16,6 +22,7 @@ input[type=checkbox]{
 }
 .lesson--controls{
   display: flex;
+  padding: 5px 0;
   svg{
     flex:30%
   }
@@ -28,6 +35,7 @@ input[type=checkbox]{
     //display: block;
     margin: 0 5px;
     border: 1px solid grey;
+    background-color: rgba(211, 211, 211, 0.828);
     border-radius: 10px;
     padding: 2px 5px;
   }
@@ -53,6 +61,7 @@ input[type=checkbox]{
 
 .hzwriter__container{
   margin: 0 auto;
+  background-image: radial-gradient(white, transparent);
 }
 
 #hzchar{
