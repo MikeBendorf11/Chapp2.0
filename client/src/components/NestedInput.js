@@ -1,5 +1,4 @@
 import React from 'react';
-// import Close from 'react-ionicons/lib/MdClose'
 import { observer } from "mobx-react"
 
 const log = console.log

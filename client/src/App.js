@@ -1,7 +1,6 @@
 import React from 'react';
 import './styles/App.scss'
 import units from './sample'
-import Input from './components/Input'
 import NestedInput from './components/NestedInput'
 import Unit from './models/Unit'
 import { observer } from "mobx-react"
@@ -9,6 +8,7 @@ import ViewControl from './components/ViewControl'
 import Hzwriter from './components/hzwriter'
 import MdNext from 'react-ionicons/lib/IosArrowForward'
 import MdPrev from 'react-ionicons/lib/IosArrowBack'
+import InputGroup from './components/InputGroup'
 
 var log = console.log 
 log(); console.clear()
@@ -43,6 +43,7 @@ class App extends React.Component {
     document.body.style.background =  `url(/svg/${Math.floor(Math.random() * 10)+1}.svg)`
     document.body.style.backgroundSize= 'cover'
   }
+
   render() {
     var key = 0,
         combs = this.getCombs()
@@ -63,52 +64,11 @@ class App extends React.Component {
         </div>
         
         <Hzwriter unit={unit}/>
-
-        {/* <div className="input__group">
-          {unit.pronunciation.map((d, i) => {
-            return <Input
-              key={key += 10}
-              unit={unit}
-              unitKey={'pronunciation'}
-              index={i}>
-            </Input>
-          })}
-        </div> */}
-        <br></br>
-        <div className="input__group">
-          <label onClick={e=>{
-            e.target.style.display='none'
-            e.target.nextSibling.style.display='block'
-          }}>definitions</label>
-          <div className="definitions">
-            {unit.definition.map((d, i) => {
-              return <Input
-                key={key += 10}
-                unit={unit}
-                unitKey={'definition'}
-                index={i}>
-              </Input>
-            })} 
-          </div>
-        </div>
+        <InputGroup unit={unit} unitKey ={'definition'} 
+          label={'Definitions'} />
+        <InputGroup unit={unit} unitKey ={'definition_alt'} 
+          label={'Other Definitions'}/>
         
-        <div className="input__group">
-        <label onClick={e=>{
-          e.target.style.display='none'
-            e.target.nextSibling.style.display='block'
-          }}>other definitions</label>
-        <div className="definitions">
-          {unit.definition_alt.map((d, i) => {
-              return <Input 
-                key={key += 10}
-                unit={unit}
-                unitKey={'definition_alt'}
-                index={i}>
-              </Input>
-            })}
-        </div>
-          
-        </div>
         <div className="sentences"> 
           <ViewControl unit={unit} className="sentences--short" disabled="short">
             {combs.short}

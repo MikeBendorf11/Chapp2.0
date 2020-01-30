@@ -1,9 +1,7 @@
 body{
   margin: 0
 }
-
 .App{
-  //display: flex;
   flex-wrap: wrap;
   height: 100vh
 }
@@ -29,38 +27,42 @@ input[type=checkbox]{
 }
 .input__group{
   width: 95%;
-  margin: 0 auto 12px;
+  margin: 0 auto 10px;
   text-align: center;
-  label{ 
-    //display: block;
-    margin: 0 5px;
+  label, .new--input,
+  .button--add--def{ 
     border: 1px solid grey;
     background-color: rgba(211, 211, 211, 0.828);
     border-radius: 10px;
-    padding: 2px 5px;
+    padding: 0 15px 0;
   }
-  .definitions{
+  .button--add--def{
+    padding: 0 5px
+  }
+  .definitions, .button--add--def, .new--input{
     display: none;
-    .definition__container{
-      font-size: 20px;
-    }
-    
   }
+}
+.definition__container, .new--input{
+  font-size: 20px;
+}
+.button--add--def{
+  margin: 0 5px;
 }
 .input__container{
   border: 1px solid grey;
   border-radius: 10%;
   height: 38px;
   display: inline-block;
-  //width: auto;
-
 }
-
+.new--input:selected{
+  background-color: white;
+}
 
 @import './Sentences.scss';
 
 .hzwriter__container{
-  margin: 0 auto;
+  margin: 10px auto;
   background-image: radial-gradient(white, transparent);
 }
 
@@ -69,10 +71,7 @@ input[type=checkbox]{
   margin: auto;
 }
 .hzwriter__links{
-  
-  
   margin:10px 0 0 0;
-  //padding: 0 25%;
   text-align: center;
   color: blue;
   .link{

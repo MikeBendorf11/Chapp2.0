@@ -15,7 +15,7 @@ class Unit {
       this[k]=unit[k]
     })
     autorun(() => {
-      //log(this.report)
+      log(this.report)
       
     }); 
   }
@@ -24,7 +24,7 @@ class Unit {
     
   }
   @computed get report(){
-      return JSON.stringify(this.passed)
+      return JSON.stringify(this.definition)
   }
 }
 

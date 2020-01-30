@@ -11,13 +11,12 @@
 .combdef__container,
 .defpron__container,
 .definition__container{
-  margin: 0 10px 0 0;
+  margin: 0 5px 0 0;
   display: inline-block;
   position: relative;
   align-items: center;
   border: 1px solid rgb(163, 162, 162);
   border-radius: 10px;
-  font-size: 30px;
   span {
     display: inline-block;
     max-width: 100%;
@@ -37,7 +36,9 @@
     right: 0;
   }
 }
-
+.combination__container{
+  font-size: 30px;
+}
 .combdef__container{
   margin:5px 0;
   font-size: 20px;
