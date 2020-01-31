@@ -292,6 +292,7 @@ module.exports = function(webpackEnv) {
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),
       alias: {
+        'react-dom': '@hot-loader/react-dom',
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
@@ -374,6 +375,7 @@ module.exports = function(webpackEnv) {
                 ),
                 
                 plugins: [
+                  ['react-hot-loader/babel'],
                   [
                     require.resolve('babel-plugin-named-asset-import'),
                     {

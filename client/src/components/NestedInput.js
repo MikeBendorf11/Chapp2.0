@@ -2,6 +2,7 @@ import React from 'react';
 import { observer } from "mobx-react"
 
 const log = console.log
+log()
 
 @observer
 class NestedInput extends React.Component {
@@ -10,6 +11,11 @@ class NestedInput extends React.Component {
     this.state = {
       editable: false
     }
+  }
+  pasterAsPlainText=(event)=>{
+    event.preventDefault()
+    const text = event.clipboardData.getData('text/plain')
+    document.execCommand('insertHTML', false, text)
   }
   render() {
     var unit = this.props.unit,
@@ -23,9 +29,11 @@ class NestedInput extends React.Component {
           <span contentEditable={true}
             suppressContentEditableWarning={true}
             onPaste={this.pasteAsPlainText}
-            onInput={e => {
-              if (e.keyCode === 13) e.returnValue = false
-              log(e.target.innerHTML.replace(/&nbsp;/g, ''))
+            onKeyPress={e => {
+              if (e.which === 13) {
+                e.returnValue = false
+                if (e.preventDefault) e.preventDefault()
+              }
             }}
           >{combination}</span>
         </div>
