@@ -3,13 +3,13 @@ import { observer } from "mobx-react"
 import Input from './Input'
 
 const log = console.log
-log()
+//log()
 
 @observer
 class InputGroup extends React.Component {
   constructor(props) {
     super(props)
-    log()
+    //log()
   }
   handleViewDefs=(e)=>{
     e.target.style.display='none'
@@ -46,22 +46,24 @@ class InputGroup extends React.Component {
       <div className="definitions">
         {unit[unitKey].map((d, i) => {
           var newIpt = ''
-            if(i===unit[unitKey].length-1) newIpt = <span 
-              key={99}
-              contentEditable={true}
-              suppressContentEditableWarning={true}
-              onPaste={this.pasteAsPlainText}
-              onKeyPress={e => {
-                if (e.which === 13) {
-                  e.returnValue = false
-                  if (e.preventDefault) e.preventDefault()
-                }
-              }}
-              className="new--input"
-              onBlur={this.handleNewInputChange}
-            > &nbsp;</span>
-          return [<Input key={i} unit={unit} unitKey={unitKey} index={i}>
-            </Input>, newIpt]
+            if(i===unit[unitKey].length-1) newIpt = 
+            <Input key={unit[unitKey].length} unit={unit} 
+              unitKey={unitKey} index={unit[unitKey].length}/>
+            // <span 
+            //   key={99}
+            //   contentEditable={true}
+            //   suppressContentEditableWarning={true}
+            //   onPaste={this.pasteAsPlainText}
+            //   onKeyPress={e => {
+            //     if (e.which === 13) {
+            //       e.returnValue = false
+            //       if (e.preventDefault) e.preventDefault()
+            //     }
+            //   }}
+            //   className="new--input"
+            //   onBlur={this.handleNewInputChange}
+            // > &nbsp;</span>
+          return [<Input key={i} unit={unit} unitKey={unitKey} index={i}/>, newIpt]
         })} 
       </div>
       <span 

@@ -10,10 +10,12 @@ import MdNext from 'react-ionicons/lib/IosArrowForward'
 import MdPrev from 'react-ionicons/lib/IosArrowBack'
 import InputGroup from './components/InputGroup'
 
+
 var log = console.log 
-log(); console.clear()
+//log(); console.clear()
 
 var unit = new Unit(units[0])//,
+
 
 @observer
 class App extends React.Component {

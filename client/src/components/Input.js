@@ -1,24 +1,21 @@
 import React from 'react';
-// import Close from 'react-ionicons/lib/MdClose'
 import { observer } from "mobx-react"
+import Timer from '../models/Timer';
 
-var log = console.log 
-log(); console.clear()
+const log = console.log 
+//log('here'); //console.clear()
+
+
 
 @observer
 class Input extends React.Component {
-  constructor(props){
-    super(props)
-    this.state={
-      readOnly: true,
-    }
-  }
   render(){
     var unit = this.props.unit
     var unitKey = this.props.unitKey
-    var value = unit[unitKey]
+    var value = unit[unitKey] || '&nbsp;'
     var idx = this.props.index
-    
+    var tmDefInput = new Timer(5)
+
     return (
       <div className="definition__container">
         <span contentEditable={true}
@@ -31,13 +28,18 @@ class Input extends React.Component {
             }
           }}
           onInput={e=>{
-            if(window.tm) {log('here');clearInterval(window.tm)}
-            window.count = 0;
-            window.tm = setInterval(()=>{
-              window.count++; log(window.count)
-              if(window.count==5) {log('there'); clearInterval(window.tm)} 
+            var currentValue = e.target.innerHTML //persist inside interval
+            clearInterval(tmDefInput.interval)
+    
+            tmDefInput.interval = setInterval(()=>{
+              tmDefInput.count++
+              if(tmDefInput.count===tmDefInput.countLimit){
+                clearInterval(tmDefInput.interval)
+                tmDefInput.count=0
+                if(unit[unitKey]) value[idx] = currentValue
+                else value.push(currentValue) //new input
+              }
             },1000)
-            
           }}
         >{value[idx]}</span>
       </div>
