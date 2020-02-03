@@ -6,7 +6,7 @@ body{
   height: 100vh
 }
 .unitid__container{
-  background-color: rgba(211, 211, 211, 0.828);
+  background-color: rgba(240, 254, 240, 0.828);
   border: 1px solid grey;
   border-radius: 25px;
   padding: 5px 10px;
@@ -25,20 +25,18 @@ input[type=checkbox]{
     flex:30%
   }
 }
-.input__group{
+div[class*="input__group"]{
   width: 95%;
   margin: 0 auto 10px;
   text-align: center;
-  label, .new--input,
-  .button--add--def{ 
+  label 
+  { 
     border: 1px solid grey;
-    background-color: rgba(211, 211, 211, 0.828);
+    background-color: rgba(240, 254, 240, 0.828);
     border-radius: 10px;
     padding: 0 15px 0;
   }
-  .button--add--def{
-    padding: 0 5px
-  }
+  
   .definitions, .button--add--def, .new--input{
     display: none;
   }
@@ -46,9 +44,7 @@ input[type=checkbox]{
 .definition__container, .new--input{
   font-size: 20px;
 }
-.button--add--def{
-  margin: 0 5px;
-}
+
 .input__container{
   border: 1px solid grey;
   border-radius: 10%;

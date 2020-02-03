@@ -66,9 +66,9 @@ class App extends React.Component {
         </div>
         
         <Hzwriter unit={unit}/>
-        <InputGroup unit={unit} unitKey ={'definition'} 
+        <InputGroup groupNumber={1} unit={unit} unitKey ={'definition'} 
           label={'Definitions'} />
-        <InputGroup unit={unit} unitKey ={'definition_alt'} 
+        <InputGroup groupNumber={2} unit={unit} unitKey ={'definition_alt'} 
           label={'Other Definitions'}/>
         
         <div className="sentences"> 

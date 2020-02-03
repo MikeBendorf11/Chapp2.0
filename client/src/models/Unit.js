@@ -24,7 +24,7 @@ class Unit {
     
   }
   @computed get report(){
-      return JSON.stringify(this.definition)
+      return JSON.stringify(this.definition_alt)
   }
 }
 
