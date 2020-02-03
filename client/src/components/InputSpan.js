@@ -5,19 +5,24 @@ const log = console.log
 //log('here'); //console.clear()
 
 @observer
-class Input extends React.Component {
+class InputSpan extends React.Component {
+  pasterAsPlainText=(event)=>{
+    event.preventDefault()
+    const text = event.clipboardData.getData('text/plain')
+    document.execCommand('insertHTML', false, text)
+  }
+
   render(){
     var unit = this.props.unit,
-      unitKey = this.props.unitKey,
-      unitArr = unit[unitKey],
-      length = unit[unitKey].length,
-      idx = this.props.index,
-      type = idx===length? 'new': 'old', //def
-      tmDefInput = {countLimit: 3, count: 0}
+    unitKey = this.props.unitKey,
+    unitArr = unit[unitKey],
+    length = unitArr.length,
+    idx = this.props.index,
+    type = idx===length? 'new': 'old', //def
+    tmDefInput = {countLimit: 3, count: 0}
 
     return (
-      <div className={this.props.className}>
-        <span contentEditable={true}
+      <span contentEditable={true}
           suppressContentEditableWarning={true}
           onPaste={this.pasteAsPlainText}
           onKeyPress={e => {
@@ -40,12 +45,12 @@ class Input extends React.Component {
                   if(!currentValue){
                     unit.swapArray(
                       unitKey, 
-                      unit[unitKey].filter(a=>a!=unit[unitKey][idx])
+                      unitArr.filter(a=>a!=unitArr[idx])
                     )
                   } else unitArr[idx] = currentValue
                     .replace(/&nbsp;/gm,' ').trim()
                 }
-                else {
+                else if(type==='new'){
                   if(!currentValue){
                     target.innerHTML = '\u00A0'
                     target.parentNode.style.display = 'none'
@@ -56,9 +61,8 @@ class Input extends React.Component {
             },1000)
           }}
         >{type==='new'? '\u00A0': unitArr[idx] }</span>
-      </div>
     )
   }
 }
 
-export default Input
+export default InputSpan

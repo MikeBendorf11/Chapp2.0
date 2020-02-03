@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from "mobx-react"
-import Input from './Input'
+import InputSpan from './InputSpan'
 
 var log = console.log
 
@@ -32,13 +32,16 @@ class InputGroup extends React.Component {
         {unit[unitKey].map((d, i) => {
           var newIpt = ''
             if(i===unit[unitKey].length-1) newIpt = 
-            <Input key={unit[unitKey].length} unit={unit} 
-              unitKey={unitKey} index={unit[unitKey].length}
-              className={'new--input'}
+            <div key={unit[unitKey].length} className={'new--input'}>
+              <InputSpan unit={unit} unitKey={unitKey} 
+                index={unit[unitKey].length}/>
+            </div>
+          return [
+            <div key={i} className={'definition__container'}>
+              <InputSpan  unit={unit} unitKey={unitKey} 
+                index={i} 
               />
-          return [<Input key={i} unit={unit} unitKey={unitKey} 
-              index={i} className={'definition__container'}
-            />, newIpt]
+            </div>, newIpt]
         })} 
       </div>
       <div 

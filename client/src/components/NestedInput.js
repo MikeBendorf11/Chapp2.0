@@ -1,17 +1,12 @@
 import React from 'react';
 import { observer } from "mobx-react"
+import InputSpan from './InputSpan'
 
 const log = console.log
 log()
 
 @observer
 class NestedInput extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      editable: false
-    }
-  }
   pasterAsPlainText=(event)=>{
     event.preventDefault()
     const text = event.clipboardData.getData('text/plain')
