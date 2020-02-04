@@ -14,17 +14,14 @@ class ViewControl extends React.Component{
   constructor(){
     super()
     this.state = {
-      showing: -1, //starts hidding for lesson review
-
+      showing: -1, //starts with hidding
     }
   }
-  componentDidMount(){
-    //log(this.props.children[0]
-  }
   roulete=(direction)=>{
-    var sw = this.state.showing
-    var next = this.props.children[sw+1]? sw+1: 0
-    var prev = this.props.children[sw-1]? sw-1: this.props.children.length-1
+    var sw = this.state.showing,
+        next = this.props.children[sw+1]? sw+1: this.state.showing==-1?-1:0,
+        prev = this.props.children[sw-1]? sw-1: this.props.children.length-1
+
     switch (direction){
       case 'prev': this.setState({showing: prev}); break
       case 'next': this.setState({showing: next}); break
@@ -32,12 +29,13 @@ class ViewControl extends React.Component{
     }
   }
   toggleDefinition=()=>{
-    document.querySelectorAll('.combdef__container')
-            .forEach(el=>{
-              if(el.style.display==='inline-block')
-                el.style.display='none'
-            else el.style.display='inline-block'
-            })
+    document
+      .querySelectorAll('.combdef__container')
+      .forEach(el=>{
+        if(el.style.display==='inline-block')
+          el.style.display='none'
+        else el.style.display='inline-block'
+      })
   }
   toggleSentGroup=(target1, target2)=>{
     if(target1.style.display==='none'){
@@ -57,7 +55,6 @@ class ViewControl extends React.Component{
     
     return(
       <div className={"view-control-box "+ this.props.className}>
-        
         <button disabled={shtIsDisabled} onClick={e=>{
           this.toggleSentGroup(
             document.querySelector('div[class*=sentences--long]'),
@@ -76,7 +73,10 @@ class ViewControl extends React.Component{
         <button onClick={_=>this.roulete('next')}><MdArrowDown/></button>
         <button disabled={disabledBeforeStart} 
           onClick={this.toggleDefinition}><MdEye/></button>
-        <button><MdAdd/></button>
+        <button><MdAdd onClick={_=>{
+          unit.combinations.push({combination: '\u00A0', definition: '\u00A0'})
+          this.setState({showing: unit.combinations.length-1})
+        }}/></button>
         <button disabled={disabledBeforeStart}><MdRemove onClick={_=>{
             unit.swapArray('combinations', 
               unit.combinations.filter(c=>

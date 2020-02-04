@@ -52,8 +52,7 @@ class App extends React.Component {
     
     return ( 
       <div className="App" >
-        <div className="lesson--controls">
-          
+        <div className="lesson--controls">  
           <MdPrev fontSize={'30px'} 
             onClick={e=>{log(e)}}/>
             <div className="unitid__container">

@@ -6,7 +6,7 @@ const log = console.log
 
 @observer
 class InputSpan extends React.Component {
-  pasterAsPlainText=(event)=>{
+  pasteAsPlainText=(event)=>{
     event.preventDefault()
     const text = event.clipboardData.getData('text/plain')
     document.execCommand('insertHTML', false, text)
@@ -15,11 +15,10 @@ class InputSpan extends React.Component {
   render(){
     var unit = this.props.unit,
     unitKey = this.props.unitKey,
-    unitArr = unit[unitKey],
-    length = unitArr.length,
+    unitArr = unit[unitKey],    
     idx = this.props.index,
-    type = idx===length? 'new': 'old', //def
-    tmDefInput = {countLimit: 3, count: 0}
+    type = idx===unitArr.length? 'new': 'old', //def
+    timer = {countLimit: 3, count: 0} //input delay
 
     return (
       <span contentEditable={true}
@@ -34,13 +33,13 @@ class InputSpan extends React.Component {
           onInput={e=>{
             var target = e.target, //persist inside interval
               currentValue = e.target.innerHTML //persist
-            clearInterval(tmDefInput.interval)//repeated typing
+            clearInterval(timer.interval)//repeated typing
     
-            tmDefInput.interval = setInterval(()=>{
-              tmDefInput.count++
-              if(tmDefInput.count===tmDefInput.countLimit){
-                clearInterval(tmDefInput.interval)
-                tmDefInput.count=0
+            timer.interval = setInterval(()=>{
+              timer.count++
+              if(timer.count===timer.countLimit){
+                clearInterval(timer.interval)
+                timer.count=0
                 if(type==='old') {
                   if(!currentValue){
                     unit.swapArray(

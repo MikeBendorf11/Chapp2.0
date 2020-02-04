@@ -21,10 +21,9 @@ class Unit {
   }
   @action swapArray(key, values){
     this[key] = values
-    
   }
   @computed get report(){
-      return JSON.stringify(this.definition_alt)
+    return JSON.stringify(this.combinations, null, 2)
   }
 }
 

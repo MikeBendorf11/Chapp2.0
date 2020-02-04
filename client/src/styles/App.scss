@@ -58,18 +58,21 @@ div[class*="input__group"]{
 @import './Sentences.scss';
 
 .hzwriter__container{
-  margin: 10px auto;
+  margin: 5px auto 15px;
   background-image: radial-gradient(white, transparent);
 }
 
 #hzchar{
   display: block;
   margin: auto;
+  padding: 10px 0 0 0;
 }
 .hzwriter__links{
-  margin:10px 0 0 0;
+  margin:5px 0 ;
   text-align: center;
   color: blue;
+  position: relative;
+  top: -5px;
   .link{
     flex:1;
     display: inline;
