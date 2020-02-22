@@ -14,7 +14,7 @@ import InputGroup from './components/InputGroup'
 var log = console.log 
 //log(); console.clear()
 
-var unit = new Unit(units[0])//,
+var unit = new Unit(units[1])//,
 
 
 @observer

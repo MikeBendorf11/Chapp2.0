@@ -44,7 +44,7 @@ class InputSpan extends React.Component {
                   if(!currentValue){
                     unit.swapArray(
                       unitKey, 
-                      unitArr.filter(a=>a!=unitArr[idx])
+                      unitArr.filter(a=>a!==unitArr[idx])
                     )
                   } else unitArr[idx] = currentValue
                     .replace(/&nbsp;/gm,' ').trim()

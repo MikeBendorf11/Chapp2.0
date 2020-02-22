@@ -19,7 +19,7 @@ class ViewControl extends React.Component{
   }
   roulete=(direction)=>{
     var sw = this.state.showing,
-        next = this.props.children[sw+1]? sw+1: this.state.showing==-1?-1:0,
+        next = this.props.children[sw+1]? sw+1: this.state.showing===-1?-1:0,
         prev = this.props.children[sw-1]? sw-1: this.props.children.length-1
 
     switch (direction){
@@ -73,16 +73,15 @@ class ViewControl extends React.Component{
         <button onClick={_=>this.roulete('next')}><MdArrowDown/></button>
         <button disabled={disabledBeforeStart} 
           onClick={this.toggleDefinition}><MdEye/></button>
-        <button><MdAdd onClick={_=>{
+        <button onClick={_=>{
           unit.combinations.push({combination: '\u00A0', definition: '\u00A0'})
           this.setState({showing: unit.combinations.length-1})
-        }}/></button>
-        <button disabled={disabledBeforeStart}><MdRemove onClick={_=>{
+        }}><MdAdd/></button>
+        <button disabled={disabledBeforeStart} onClick={_=>{
             unit.swapArray('combinations', 
               unit.combinations.filter(c=>
                 JSON.stringify(c)!==JSON.stringify(unit.combinations[this.state.showing]))) 
-        }}
-        /></button>
+        }}><MdRemove/></button>
         {this.props.children[this.state.showing]}
       </div>
     )

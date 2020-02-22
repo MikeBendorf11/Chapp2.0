@@ -38,7 +38,7 @@ class NestedInput extends React.Component {
             if(timer.count===timer.countLimit){
               clearInterval(timer.interval)
               timer.count=0  
-              log(currentValue)
+              //log(currentValue)
               if(currentValue.match(/([^\s])/)) //mobile is fine
                 unitArr[idx][type] = currentValue
                   .replace(/&nbsp;/gm,' ').trim()
