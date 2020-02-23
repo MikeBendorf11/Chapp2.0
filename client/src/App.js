@@ -9,12 +9,12 @@ import Hzwriter from './components/hzwriter'
 import MdNext from 'react-ionicons/lib/IosArrowForward'
 import MdPrev from 'react-ionicons/lib/IosArrowBack'
 import InputGroup from './components/InputGroup'
-
+import Menu from './components/Menu'
 
 var log = console.log 
 //log(); console.clear()
 
-var unit = new Unit(units[1])//,
+var unit = new Unit(units[0])//,
 
 
 @observer
@@ -42,7 +42,7 @@ class App extends React.Component {
     }) 
   }
   componentDidMount(){
-    document.body.style.background =  `url(/svg/${Math.floor(Math.random() * 10)+1}.svg)`
+    document.body.style.background =  `url(/svg/${Math.floor(Math.random() * 9)+1}.svg)`
     document.body.style.backgroundSize= 'cover'
   }
 
@@ -52,6 +52,7 @@ class App extends React.Component {
     
     return ( 
       <div className="App" >
+        <Menu />
         <div className="lesson--controls">  
           <MdPrev fontSize={'30px'} 
             onClick={e=>{log(e)}}/>
