@@ -3,7 +3,7 @@ body{
 }
 .App{
   flex-wrap: wrap;
-  height: 100vh
+  //height: 100vh
 }
 .unitid__container{
   background-color: rgba(240, 254, 240, 0.828);
@@ -79,4 +79,8 @@ div[class*="input__group"]{
     font-size: 30px;
     cursor: pointer;
   }
+}
+
+.search__page{
+  background-color: white;
 }

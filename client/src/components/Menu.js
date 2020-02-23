@@ -1,88 +1,87 @@
 import React from 'react';
 import SearchIcon from 'react-ionicons/lib/MdSearch'
-import DrawIcon from 'react-ionicons/lib/MdBrush'
+import SentencesIcon from 'react-ionicons/lib/MdListBox'
 import IchachaIcon from 'react-ionicons/lib/MdBook' //for ichacha
+import MdBulb from 'react-ionicons/lib/MdBulb'
 import MdbgIcon from '../images/mdbg-small.png'
-import CpodIcon from '../images/cpod-small.png'
 import Swipe from './Swipe'
 
 
-export default class Example extends React.Component{
-  constructor(props){
+export default class Example extends React.Component {
+  constructor(props) {
     super(props)
     this.hideMenu = this.hideMenu.bind(this)
     this.showMenu = this.showMenu.bind(this)
   }
-  componentDidMount(){
+  componentDidMount() {
     this.overlay = document.querySelector('.menu-overlay')
     this.element = document.querySelector('.menu-overlay>div')
     var swipe = new Swipe(this.element)
-    swipe.onLeft(()=>{
+    swipe.onLeft(() => {
       this.hideMenu()
       //document.body.requestFullscreen();
     })
-    swipe.onRight(()=>{
+    swipe.onRight(() => {
       this.showMenu()
     })
-    swipe.onUp(()=>{})
-    swipe.onDown(()=>{})
+    swipe.onUp(() => { })
+    swipe.onDown(() => { })
     swipe.addListener()
 
   }
-  hideMenu(){
+  hideMenu() {
+    var container = document.querySelector('.menu-container')
     this.element.classList.remove('menu-open')
     this.overlay.style.visibility = 'hidden'
-    document.querySelector('.menu-container').style.backgroundColor = 'transparent'
+    container.style.backgroundColor = 'transparent'
+    container.style.color = 'transparent'
   }
-  showMenu(){
+  showMenu() {
+    var container = document.querySelector('.menu-container')
     this.element.classList.add('menu-open')
     this.overlay.style.visibility = 'visible'
-    document.querySelector('.menu-container').style.backgroundColor = 'rgba(240, 254, 240, 0.851)'
+    container.style.backgroundColor = 'rgba(240, 254, 240, 0.851)'
+    container.style.color = 'black'
   }
-  render(){
-    return(
+  hideAllPages() {
+    document.querySelectorAll('[class*=page]').forEach((elem, i) => {
+      elem.style.display = "none"
+    })
+  }
+  showPage(page) {
+    document.querySelector(page).style.display = 'block'
+  }
+  render() {
+    return (
+      <div className={'menu-overlay'} onClick={() => this.hideMenu()}>
+        <div className={'menu-container'} >
+          <div className={'menu-item-container'}  onClick={_ => {
+            this.hideAllPages(); this.showPage('.review__page')
+          }}>
+            <MdBulb color={'#495057'} className={'menu__icon'} />
+            <span className={'menu__description'}>Review</span>
+          </div>
+          <div className={'menu-item-container'} onClick={_ => {
+            this.hideAllPages(); this.showPage('.search__page')
+          }}>
+            <SearchIcon color={'#495057'} className={'menu__icon'} /> 
+            <span className={'menu__description'}>Search</span>
+          </div>
+          <div className={'menu-item-container'}>
+            <img src={MdbgIcon} className={'menu__icon'} />
+            <span className={'menu__description'}>Mdbg</span>
+          </div>
+          <div className={'menu-item-container'}>
+            <IchachaIcon color={'#495057'} className={'menu__icon'} />
+            <span className={'menu__description'}>Ichacha</span>
+          </div>
+          <div className={'menu-item-container'}>
+            <SentencesIcon color={'#495057'} className={'menu__icon'} />
+            <span className={'menu__description'}>Sentences</span>
+          </div>
 
-
-    <div className={'menu-overlay'} onClick={
-      ()=>this.hideMenu()    }>
-      <div className={'menu-container'} >
-
-      <div className={'menu-item-container'} onClick={()=>{
-        /*var doc = window.document;
-        var docEl = doc.documentElement;
-
-        var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-        var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
-
-        if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-          requestFullScreen.call(docEl);
-        }
-        else {
-          cancelFullScreen.call(doc);
-        }*/
-      }}>
-        <DrawIcon color={'#495057'} className={'menu__icon'}/>
-        <span className={'menu__description'}>Draw</span>
+        </div>
       </div>
-      <div className={'menu-item-container'}>
-        <SearchIcon color={'#495057'} className={'menu__icon'}/>
-        <span className={'menu__description'}>Search</span>
-      </div>
-      <div className={'menu-item-container'}>
-        <img src={MdbgIcon} className={'menu__icon'}/>
-        <span className={'menu__description'}>Mdbg</span>
-      </div>
-      <div className={'menu-item-container'}>
-        <IchachaIcon color={'#495057'}  className={'menu__icon'}/>
-        <span className={'menu__description'}>Ichacha</span>
-      </div>
-      <div className={'menu-item-container'}>
-        <img src={CpodIcon} className={'menu__icon'}/>
-        <span className={'menu__description'}>Cpod</span>
-      </div>
-
-      </div>
-    </div>
 
 
     )
