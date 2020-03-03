@@ -5,13 +5,30 @@ import IchachaIcon from 'react-ionicons/lib/MdBook' //for ichacha
 import MdBulb from 'react-ionicons/lib/MdBulb'
 import MdbgIcon from '../images/mdbg-small.png'
 import Swipe from './Swipe'
+import Modal from 'react-modal';
+import Search from '../models/Search'
 
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    padding: 0,
+    width: '75%'
+  }
+};
 
 export default class Example extends React.Component {
   constructor(props) {
     super(props)
     this.hideMenu = this.hideMenu.bind(this)
     this.showMenu = this.showMenu.bind(this)
+    this.state = {
+      showModal: true,
+    };
   }
   componentDidMount() {
     this.overlay = document.querySelector('.menu-overlay')
@@ -52,35 +69,54 @@ export default class Example extends React.Component {
     document.querySelector(page).style.display = 'block'
   }
   render() {
+    var phrase = this.props.search.phrase
     return (
       <div className={'menu-overlay'} onClick={() => this.hideMenu()}>
         <div className={'menu-container'} >
-          <div className={'menu-item-container'}  onClick={_ => {
-            this.hideAllPages(); this.showPage('.review__page')
-          }}>
-            <MdBulb color={'#495057'} className={'menu__icon'} />
-            <span className={'menu__description'}>Review</span>
-          </div>
-          <div className={'menu-item-container'} onClick={_ => {
-            this.hideAllPages(); this.showPage('.search__page')
-          }}>
-            <SearchIcon color={'#495057'} className={'menu__icon'} /> 
-            <span className={'menu__description'}>Search</span>
-          </div>
-          <div className={'menu-item-container'}>
-            <img src={MdbgIcon} className={'menu__icon'} />
-            <span className={'menu__description'}>Mdbg</span>
-          </div>
-          <div className={'menu-item-container'}>
-            <IchachaIcon color={'#495057'} className={'menu__icon'} />
-            <span className={'menu__description'}>Ichacha</span>
-          </div>
-          <div className={'menu-item-container'}>
-            <SentencesIcon color={'#495057'} className={'menu__icon'} />
-            <span className={'menu__description'}>Sentences</span>
+          <div className={'menu-group-container'}>
+            <div className={'menu-item-container'} onClick={_ => {
+              this.hideAllPages(); this.showPage('.review__page')
+            }}>
+              <MdBulb color={'#495057'} className={'menu__icon'} />
+              <span className={'menu__description'}>Review</span>
+            </div>
+            <div className={'menu-item-container'} onClick={_ => {
+              this.hideAllPages(); this.setState({ showModal: true })
+              this.showPage('.search__page')
+            }}>
+              <SearchIcon color={'#495057'} className={'menu__icon'} />
+              <span className={'menu__description'}>Search</span>
+            </div>
+            <div className={'menu-item-container'}>
+              <img src={MdbgIcon} className={'menu__icon'} />
+              <span className={'menu__description'}>Mdbg</span>
+            </div>
+            <div className={'menu-item-container'}>
+              <IchachaIcon color={'#495057'} className={'menu__icon'} />
+              <span className={'menu__description'}>Ichacha</span>
+            </div>
+            <div className={'menu-item-container'}>
+              <SentencesIcon color={'#495057'} className={'menu__icon'} />
+              <span className={'menu__description'}>Sentences</span>
+            </div>
+
           </div>
 
         </div>
+        <Modal
+          isOpen={this.state.showMod33al}
+          onRequestClose={_ => this.setState({ showModal: false })}
+          appElement={document.createElement('div')}
+          contentLabel="Example Modal"
+          style={customStyles}
+        > 
+          <div className='modal--content'>
+            <SearchIcon fontSize={'60px'} onClick={_=>{}}/>
+            <input className='input--search'></input>
+          </div>
+          
+          
+        </Modal>
       </div>
 
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import units from './sample'
 import Unit from './models/Unit'
+import Search from './models/Search'
 import { observer } from "mobx-react"
 import Menu from './components/Menu'
 import Review from './components/Review'
@@ -14,6 +15,7 @@ import Div100vh from 'react-div-100vh'
 var log = console.log
 //log(); console.clear()
 var unit = new Unit(units[0])//,
+var search = new Search(units)
 
 @observer
 class App extends React.Component {
@@ -28,11 +30,11 @@ class App extends React.Component {
     return (
       <Div100vh>
         <div className="App" >
-          <Menu />
+          <Menu search={search} />
           <Review unit={unit} />
           <div className="search__page">
             <Editor
-              value={units}
+              value={search.phrase}
               onChange={this.handleChange}
               ace={ace}
               theme="ace/theme/kuroir"
