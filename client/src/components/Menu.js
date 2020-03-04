@@ -8,6 +8,9 @@ import Swipe from './Swipe'
 import Modal from 'react-modal';
 import Search from '../models/Search'
 
+var log = console.log 
+log(); console.clear()
+
 const customStyles = {
   content: {
     top: '50%',
@@ -28,6 +31,7 @@ export default class Example extends React.Component {
     this.showMenu = this.showMenu.bind(this)
     this.state = {
       showModal: true,
+      searchPhrase: ''
     };
   }
   componentDidMount() {
@@ -69,20 +73,22 @@ export default class Example extends React.Component {
     document.querySelector(page).style.display = 'block'
   }
   render() {
-    var phrase = this.props.search.phrase
+    var search = this.props.search
     return (
       <div className={'menu-overlay'} onClick={() => this.hideMenu()}>
         <div className={'menu-container'} >
           <div className={'menu-group-container'}>
             <div className={'menu-item-container'} onClick={_ => {
-              this.hideAllPages(); this.showPage('.review__page')
+              this.hideAllPages(); 
+              this.showPage('.review__page')
             }}>
               <MdBulb color={'#495057'} className={'menu__icon'} />
               <span className={'menu__description'}>Review</span>
             </div>
             <div className={'menu-item-container'} onClick={_ => {
-              this.hideAllPages(); this.setState({ showModal: true })
-              this.showPage('.search__page')
+              //this.hideAllPages(); 
+              this.setState({ showModal: true })
+              //this.showPage('.search__page')
             }}>
               <SearchIcon color={'#495057'} className={'menu__icon'} />
               <span className={'menu__description'}>Search</span>
@@ -104,15 +110,22 @@ export default class Example extends React.Component {
 
         </div>
         <Modal
-          isOpen={this.state.showMod33al}
+          isOpen={this.state.showModal}
           onRequestClose={_ => this.setState({ showModal: false })}
           appElement={document.createElement('div')}
           contentLabel="Example Modal"
           style={customStyles}
         > 
           <div className='modal--content'>
-            <SearchIcon fontSize={'60px'} onClick={_=>{}}/>
-            <input className='input--search'></input>
+            <SearchIcon fontSize={'60px'} onClick={_=>{
+              search.lookFor(this.state.searchPhrase)
+            }}/>
+            <input className='input--search' onKeyUp={e=>
+              {
+                
+                this.setState({searchPhrase: e.target.value})}
+            }>
+            </input>
           </div>
           
           

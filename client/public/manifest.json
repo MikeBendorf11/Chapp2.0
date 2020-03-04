@@ -1,0 +1,13 @@
+{
+  "short_name": "Chapp",
+  "name": "Chapp",
+  "description": "Chapp",
+  "icons": [
+    
+  ],
+  "start_url": "/",
+  "background_color": "#3367D6",
+  "display": "fullscreen",
+  "scope": "/",
+  "theme_color": "#3367D6"
+}

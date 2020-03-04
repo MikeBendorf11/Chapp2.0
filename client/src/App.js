@@ -34,7 +34,7 @@ class App extends React.Component {
           <Review unit={unit} />
           <div className="search__page">
             <Editor
-              value={search.phrase}
+              value={{}}
               onChange={this.handleChange}
               ace={ace}
               theme="ace/theme/kuroir"

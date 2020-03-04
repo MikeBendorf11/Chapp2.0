@@ -15,7 +15,7 @@ class Unit {
       this[k]=unit[k]
     })
     autorun(() => {
-      log(this.report)
+      //log(this.report)
       
     }); 
   }
