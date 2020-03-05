@@ -118,7 +118,7 @@ export default class Example extends React.Component {
         > 
           <div className='modal--content'>
             <SearchIcon fontSize={'60px'} onClick={_=>{
-              search.lookFor(this.state.searchPhrase)
+              search.lookFor(this.state.searchPhrase.trim())
             }}/>
             <input className='input--search' onKeyUp={e=>
               {

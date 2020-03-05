@@ -22,7 +22,7 @@ class Search{
   getAllIndexes=(arr, query, prop)=> {
     var indexes = []
     arr.forEach((v,i)=>{
-      if(v[prop].includes(query)){
+      if(v[prop].match(query)){
         indexes.push(i)
       }
     })
@@ -33,7 +33,7 @@ class Search{
     if(prop){
       return this.getAllIndexes(arr,query,prop)
     }
-    else return arr.findIndex(a=>a.includes(query))
+    else return arr.findIndex(a=>a.match(query))
   }
   @action
   lookFor(query){
@@ -41,37 +41,43 @@ class Search{
         arrayMatch= this.arrayMatch,
         result =[],
         units = JSON.parse(this.latinise(JSON.stringify(units))),
-        idx
-
+        idx,
+        query = query.trim(),
+        //latin letter words need word boundary, hanzi don't 
+        regexp = query.match(/[a-zA-Z]/) ? 
+          new RegExp(`\\b${query}\\b`,'gm') : new RegExp(query, 'gm')
+    
     units.forEach((unit)=>{
-      if(JSON.stringify(unit).includes(query)){
+      if(JSON.stringify(unit).match(regexp)){
         result.push({
           id: unit.id,
           matches: []
         })
-        
-        idx =arrayMatch(unit.combinations,  query, 'definition')
-        if(idx.length>0)
-          idx.forEach(i=>{
-            result[result.length-1].matches.push(
-              unit.combinations[i].combination
-            ) 
-          })
-        idx = arrayMatch(unit.combinations, query,'combination')
-        if(idx.length>0)
-          idx.forEach(i=>{
-            result[result.length-1].matches.push(
-              unit.combinations[i].combination
-            ) 
-          })
-          
-        if(arrayMatch (unit.definition, query) >-1 ||
-        arrayMatch(unit.definition_alt,query) >-1 ||
-        arrayMatch(unit.pronunciation, query) >-1 ) 
+        if(arrayMatch (unit.definition, regexp) >-1 ||
+        arrayMatch(unit.definition_alt,regexp) >-1 ||
+        arrayMatch(unit.pronunciation, regexp) >-1 ||
+        unit.char.includes(query)) {
           result[result.length-1].matches.push(unit.char) 
+        }
+        idx = arrayMatch(unit.combinations, regexp,'combination')
+        if(idx.length>0){
+          idx.forEach(i=>{
+            result[result.length-1].matches.push(
+              unit.combinations[i].combination
+            ) 
+          })
+        }
+        idx =arrayMatch(unit.combinations,  regexp, 'definition')
+        if(idx.length>0){
+          idx.forEach(i=>{
+            result[result.length-1].matches.push(
+              unit.combinations[i].combination
+            ) 
+          })
+        }
       }
     })
-    log(result) 
+    log(JSON.stringify(result, null, 2)) 
   }
 }
 
