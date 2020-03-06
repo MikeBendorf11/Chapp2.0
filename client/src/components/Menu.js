@@ -31,7 +31,8 @@ export default class Example extends React.Component {
     this.showMenu = this.showMenu.bind(this)
     this.state = {
       showModal: true,
-      searchPhrase: ''
+      searchPhrase: '',
+      results : []
     };
   }
   componentDidMount() {
@@ -117,22 +118,30 @@ export default class Example extends React.Component {
           style={customStyles}
         > 
           <div className='modal--content'>
-            <SearchIcon fontSize={'60px'} onClick={_=>{
+            {/* <SearchIcon fontSize={'60px'} onClick={_=>{
               search.lookFor(this.state.searchPhrase.trim())
-            }}/>
-            <input className='input--search' onKeyUp={e=>
-              {
-                
-                this.setState({searchPhrase: e.target.value})}
-            }>
+            }}/> */}
+            <input className='input--search' onKeyUp={e=>{
+                if(e.target.value.trim()){
+                  this.setState({ 
+                    results: search.lookFor(e.target.value.trim())})}
+                // this.setState({searchPhrase: e.target.value})}
+            }}> 
             </input>
+            <div className="search--result__contaner">{this.state.results.map((r,i)=>{
+              return r.matches.map((m,j)=>{
+                return <span 
+                  key={j} 
+                  className="search--result"
+                  onClick={_=>search.openUnit = r.id}
+                  >{m}</span>
+                })
+              })}
+            </div>
+
           </div>
-          
-          
         </Modal>
       </div>
-
-
     )
   }
 }

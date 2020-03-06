@@ -46,24 +46,32 @@
     position: relative;
     top: 5px;
   }
-  .menu__icon{
-    width: 30px;
-    height: 30px;
-  }
-  .menu-open{
-    left:0px;
-    transition: .3s;
+.menu__icon{
+  width: 30px;
+  height: 30px;
+}
+.menu-open{
+  left:0px;
+  transition: .3s;
+}
+
+.modal--content{
+  svg{
+    display: block;
+    margin: 0 auto;
   }
 
-  .modal--content{
-    svg{
-      display: block;
-      margin: 0 auto;
-    }
+}
+.input--search{
+  font-size: 30px;
+}
 
-  }
-  .input--search{
-    font-size: 30px;
-  }
-
+.search--result__contaner{
+  overflow-x: hidden;
+}
+.search--result{
+  display: block;
+  text-decoration: underline;
+  color: blue;
   
+}
