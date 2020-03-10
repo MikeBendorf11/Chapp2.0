@@ -6,23 +6,22 @@ import MdBulb from 'react-ionicons/lib/MdBulb'
 import MdbgIcon from '../images/mdbg-small.png'
 import Swipe from './Swipe'
 import Modal from 'react-modal';
-import Search from '../models/Search'
 
 var log = console.log 
 log(); console.clear()
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    padding: 0,
-    width: '75%'
-  }
-};
+// const customStyles = {
+//   content: {
+//     top: '50%',
+//     left: '50%',
+//     right: 'auto',
+//     bottom: 'auto',
+//     marginRight: '-50%',
+//     transform: 'translate(-50%, -50%)',
+//     padding: 0//,
+//     //width: '75%'
+//   }
+// };
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -74,7 +73,8 @@ export default class Example extends React.Component {
     document.querySelector(page).style.display = 'block'
   }
   render() {
-    var search = this.props.search
+    var search = this.props.search,
+        pages = this.props.pages
     return (
       <div className={'menu-overlay'} onClick={() => this.hideMenu()}>
         <div className={'menu-container'} >
@@ -95,7 +95,7 @@ export default class Example extends React.Component {
               <span className={'menu__description'}>Search</span>
             </div>
             <div className={'menu-item-container'}>
-              <img src={MdbgIcon} className={'menu__icon'} />
+              <img src={MdbgIcon} alt='' className={'menu__icon'} />
               <span className={'menu__description'}>Mdbg</span>
             </div>
             <div className={'menu-item-container'}>
@@ -115,30 +115,31 @@ export default class Example extends React.Component {
           onRequestClose={_ => this.setState({ showModal: false })}
           appElement={document.createElement('div')}
           contentLabel="Example Modal"
-          style={customStyles}
+          //style={customStyles}
         > 
           <div className='modal--content'>
-            {/* <SearchIcon fontSize={'60px'} onClick={_=>{
-              search.lookFor(this.state.searchPhrase.trim())
-            }}/> */}
-            <input className='input--search' onKeyUp={e=>{
-                if(e.target.value.trim()){
-                  this.setState({ 
-                    results: search.lookFor(e.target.value.trim())})}
-                // this.setState({searchPhrase: e.target.value})}
-            }}> 
-            </input>
-            <div className="search--result__contaner">{this.state.results.map((r,i)=>{
+            <div className="input--search__container">
+              <input className='input--search' onKeyUp={e=>{
+                  if(e.target.value.trim()){
+                    this.setState({ 
+                      results: search.lookFor(e.target.value.trim())})}
+                  }}> 
+              </input>
+            </div>
+            <div className="search--result__contaner">{
+            this.state.results.map((r,i)=>{
               return r.matches.map((m,j)=>{
                 return <span 
                   key={j} 
                   className="search--result"
-                  onClick={_=>search.openUnit = r.id}
-                  >{m}</span>
-                })
-              })}
+                  onClick={_=>{
+                    
+                    pages.show(pages.search)
+                    search.currentUnit = search.units.filter(u=>u.id===r.id)
+                    this.setState({showModal: false})
+                  }}><sup><b>.</b></sup> {m}<br></br></span>
+                })})}
             </div>
-
           </div>
         </Modal>
       </div>

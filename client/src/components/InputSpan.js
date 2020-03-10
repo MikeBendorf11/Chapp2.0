@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from "mobx-react"
 
 const log = console.log 
-//log('here'); //console.clear()
+log(); console.clear()
 
 @observer
 class InputSpan extends React.Component {

@@ -3,6 +3,7 @@ import { observer } from "mobx-react"
 import InputSpan from './InputSpan'
 
 var log = console.log
+log(); console.clear()
 
 @observer
 class InputGroup extends React.Component {
