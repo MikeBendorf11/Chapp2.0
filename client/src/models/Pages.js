@@ -7,13 +7,13 @@ class Pages {
   @observable visible=""
   @observable hidden=""
   review='review'
-  search='editor' 
+  editor='editor' 
   browser='browser'
-  pages=[this.review, this.search]//, this.browser]
+  pages=[this.review, this.editor]//, this.browser]
   @observable current=""
 
   hide(page){
-    //log(document.querySelector(`[class*=${page}__page]`))
+    
     document.querySelector(`[class*=${page}__page]`)
     .style.display="none"
   }

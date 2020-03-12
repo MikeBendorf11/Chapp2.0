@@ -9,7 +9,8 @@ const latin_map={
 class Search{
   @observable unitId
   @observable units
-  @observable currentUnit = {}
+  @observable currentUnit // = {a: 1, b: [2, 5 ,6]}
+  @observable query //= 1
 
   constructor(units){
     this.units = units
@@ -53,6 +54,7 @@ class Search{
         //latin letter words need word boundary, hanzi don't 
         regexp = query.match(/[a-zA-Z]/) ? 
           new RegExp(`\\b${query}\\b`,'gm') : new RegExp(query, 'gm')
+    this.query = query
     
     units.forEach((unit, i)=>{
       if(JSON.stringify(unit).match(regexp)){

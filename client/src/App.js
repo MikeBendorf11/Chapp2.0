@@ -32,7 +32,8 @@ class App extends React.Component {
         <div className="App" >
           <Menu search={search} pages={pages}/>
           <Review unit={unit} pages={pages}/>
-          <Editor unit={search.currentUnit}/>
+          {/* Unit prop helps ace reload */}
+          <Editor unit={search.currentUnit} search={search}/>
         </div>
       </Div100vh> 
     )

@@ -1,5 +1,5 @@
 [{
-  "id": 163,
+  "id": 0,
   "learnedId": 501,
   "passed": true,
   "char": "非常",
@@ -62,7 +62,7 @@
     "extraordinary"
   ]
 },{
-  "id": 5,
+  "id": 1,
   "learnedId": 5,
   "passed": false,
   "char": "不",
@@ -84,7 +84,7 @@
   "definition_alt": []
 },
 {
-  "id": 6,
+  "id": 2,
   "learnedId": 6,
   "passed": false,
   "char": "在",

@@ -3,6 +3,7 @@ import SearchIcon from 'react-ionicons/lib/MdSearch'
 import SentencesIcon from 'react-ionicons/lib/MdListBox'
 import IchachaIcon from 'react-ionicons/lib/MdBook' //for ichacha
 import MdBulb from 'react-ionicons/lib/MdBulb'
+import IosCreate from 'react-ionicons/lib/IosCreate'
 import MdbgIcon from '../images/mdbg-small.png'
 import Swipe from './Swipe'
 import Modal from 'react-modal';
@@ -29,7 +30,7 @@ export default class Example extends React.Component {
     this.hideMenu = this.hideMenu.bind(this)
     this.showMenu = this.showMenu.bind(this)
     this.state = {
-      showModal: true,
+      showModal: false,
       searchPhrase: '',
       results : []
     };
@@ -64,14 +65,6 @@ export default class Example extends React.Component {
     container.style.backgroundColor = 'rgba(240, 254, 240, 0.851)'
     container.style.color = 'black'
   }
-  hideAllPages() {
-    document.querySelectorAll('[class*=page]').forEach((elem, i) => {
-      elem.style.display = "none"
-    })
-  }
-  showPage(page) {
-    document.querySelector(page).style.display = 'block'
-  }
   render() {
     var search = this.props.search,
         pages = this.props.pages
@@ -80,19 +73,24 @@ export default class Example extends React.Component {
         <div className={'menu-container'} >
           <div className={'menu-group-container'}>
             <div className={'menu-item-container'} onClick={_ => {
-              this.hideAllPages(); 
-              this.showPage('.review__page')
+              pages.show(pages.review)
+              this.setState({showModal: false})
             }}>
               <MdBulb color={'#495057'} className={'menu__icon'} />
               <span className={'menu__description'}>Review</span>
             </div>
             <div className={'menu-item-container'} onClick={_ => {
-              //this.hideAllPages(); 
               this.setState({ showModal: true })
-              //this.showPage('.search__page')
             }}>
               <SearchIcon color={'#495057'} className={'menu__icon'} />
               <span className={'menu__description'}>Search</span>
+            </div>
+            <div className={'menu-item-container'} onClick={_=>{
+              pages.show(pages.editor)
+              this.setState({showModal: false})
+            }}>
+            <IosCreate color={'#495057'} className={'menu__icon'} />
+              <span className={'menu__description'}>Editor</span>
             </div>
             <div className={'menu-item-container'}>
               <img src={MdbgIcon} alt='' className={'menu__icon'} />
@@ -134,7 +132,7 @@ export default class Example extends React.Component {
                   className="search--result"
                   onClick={_=>{
                     
-                    pages.show(pages.search)
+                    pages.show(pages.editor)
                     search.currentUnit = search.units.filter(u=>u.id===r.id)
                     this.setState({showModal: false})
                   }}><sup><b>.</b></sup> {m}<br></br></span>
