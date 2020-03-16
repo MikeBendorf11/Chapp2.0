@@ -131,7 +131,6 @@ export default class Example extends React.Component {
                   key={j} 
                   className="search--result"
                   onClick={_=>{
-                    
                     pages.show(pages.editor)
                     search.currentUnit = search.units.filter(u=>u.id===r.id)
                     this.setState({showModal: false})

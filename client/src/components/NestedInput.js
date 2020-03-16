@@ -16,8 +16,8 @@ class NestedInput extends React.Component {
         unitKey = this.props.unitKey,
         unitArr = unit[unitKey], 
         idx = this.props.index,
-        data = type==='combination'? unit[unitKey][idx].combination:
-          unit[unitKey][idx].definition
+        data = type==='hanzi'? unit[unitKey][idx].hanzi:
+          unit[unitKey][idx].def
     return(
       <span contentEditable={true}
         suppressContentEditableWarning={true}
@@ -57,10 +57,10 @@ class NestedInput extends React.Component {
     return (
       <div className="sentence__group">
         <div className={"combination__container"}>
-          {this.inputSpan('combination',timer1)}        
+          {this.inputSpan('hanzi',timer1)}        
         </div>
         <div className="combdef__container">
-          {this.inputSpan('definition',timer2)}
+          {this.inputSpan('def',timer2)}
         </div>
       </div>
     )

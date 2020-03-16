@@ -74,13 +74,13 @@ class ViewControl extends React.Component{
         <button disabled={disabledBeforeStart} 
           onClick={this.toggleDefinition}><MdEye/></button>
         <button onClick={_=>{
-          unit.combinations.push({combination: '\u00A0', definition: '\u00A0'})
-          this.setState({showing: unit.combinations.length-1})
+          unit.combs.push({hanzi: '\u00A0', def: '\u00A0'})
+          this.setState({showing: unit.combs.length-1})
         }}><MdAdd/></button>
         <button disabled={disabledBeforeStart} onClick={_=>{
-            unit.swapArray('combinations', 
-              unit.combinations.filter(c=>
-                JSON.stringify(c)!==JSON.stringify(unit.combinations[this.state.showing]))) 
+            unit.swapArray('combs', 
+              unit.combs.filter(c=>
+                JSON.stringify(c)!==JSON.stringify(unit.combs[this.state.showing]))) 
         }}><MdRemove/></button>
         {this.props.children[this.state.showing]}
       </div>

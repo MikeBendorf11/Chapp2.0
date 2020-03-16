@@ -16,14 +16,14 @@ class Review extends React.Component {
         longGroup = [] ,
         key = 20
         
-    unit.combinations.map((c,i)=>{
+    unit.combs.map((c,i)=>{
       var ipt = (<NestedInput 
           key={key+=20}
           unit={unit}
-          unitKey={'combinations'}
+          unitKey={'combs'}
           index={i}
         />)
-      if(c.combination.length<5){
+      if(c.hanzi.length<5){
          shortGroup.push(ipt)
         }
       else longGroup.push(ipt); return ''
@@ -37,15 +37,15 @@ class Review extends React.Component {
     var key = 0,
         unit = this.props.unit,
         combs = this.getCombs(unit)
-
+    
     return(
       <div className="review__page">
         <div className="lesson--controls">  
           <MdPrev fontSize={'30px'} 
             onClick={e=>{log(e)}}/>
             <div className="unitid__container">
-              <span  key={key}>{unit.id}&nbsp;</span><input type="checkbox" checked={unit.passed}
-              onChange={e => { unit.passed = e.target.checked }}
+              <span  key={key}>{unit.id}&nbsp;</span><input type="checkbox" checked={unit.done}
+              onChange={e => { unit.done = e.target.checked }}
             ></input>
             </div>
           <MdNext fontSize={'30px'}
@@ -53,9 +53,9 @@ class Review extends React.Component {
         </div>
         
         <Hzwriter unit={unit}/>
-        <InputGroup groupNumber={1} unit={unit} unitKey ={'definition'} 
+        <InputGroup groupNumber={1} unit={unit} unitKey ={'def'} 
           label={'Definitions'} />
-        <InputGroup groupNumber={2} unit={unit} unitKey ={'definition_alt'} 
+        <InputGroup groupNumber={2} unit={unit} unitKey ={'def_alt'} 
           label={'Other Definitions'}/>
         
         <div className="sentences"> 

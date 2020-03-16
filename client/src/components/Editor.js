@@ -21,11 +21,11 @@ class Editor extends React.Component {
 
   componentWillUnmount () {
     if (this.jsoneditor) {
-      this.jsoneditor.destroy();
+      this.jsoneditor.destroy()
     }
   }
   componentDidUpdate() {
-    this.jsoneditor.update(this.props.unit);
+    this.jsoneditor.update(this.props.unit)
     this.jsoneditor.expandAll()
     this.focusSearchInput()
   }

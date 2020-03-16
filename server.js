@@ -37,13 +37,12 @@ app.post('/save', (rq, rs) => {
   collection.updateOne({ id: dt.id }, {
     $set: {
       id: dt.id,
-      learnedId: dt.learnedId,
-      level: dt.level,
-      consult: dt.consult,
-      char: dt.char,
-      pronunciation: dt.pronunciation,
-      combinations: dt.combinations,
-      definitions: dt.definitions,
+      learnId: dt.learnId,
+      done: dt.done,
+      hanzi: dt.hanzi,
+      pinyin: dt.pinyin,
+      combs: dt.combs,
+      time: dt.time,
     }
   }, (err, res) => {
     var obj = err ? err : res
@@ -65,8 +64,8 @@ app.post('/hanzi*', (rq, rs) => {
     rs.json(JSON.parse(fs.readFileSync(
       'hanzi-writer/strokes-subtlex-1500.json.min')))
   } else {
-    let char = rq.params[0].replace('/', '')
-    rs.json(JSON.parse(fs.readFileSync('hanzi-writer/' + char + '.json')))
+    let hanzi = rq.params[0].replace('/', '')
+    rs.json(JSON.parse(fs.readFileSync('hanzi-writer/' + hanzi + '.json')))
   }
 })
 

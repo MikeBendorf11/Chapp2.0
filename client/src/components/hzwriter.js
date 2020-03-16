@@ -9,17 +9,17 @@ export default class hzwriter extends React.Component {
   }
   componentDidMount() {
     var unit = this.props.unit
-    this.quizChar(unit.char[0])
+    this.quizChar(unit.hanzi[0])
   }
-  quizChar = (char) => {
-    fetch('/hanzi/' + char, { method: 'POST' })
+  quizChar = (hanzi) => {
+    fetch('/hanzi/' + hanzi, { method: 'POST' })
       .then(resp => resp.json())
       .then(data => {
-        //redraw char to delete the preious quiz result
+        //redraw hanzi to delete the preious quiz result
         document.getElementById('hzchar').innerHTML = '<line x1="0" y1="0" x2="230" y2="230" stroke="#DDD" /><line x1="230" y1="0" x2="0" y2="230" stroke="#DDD" /><line x1="115" y1="0" x2="115" y2="230" stroke="#DDD" /><line x1="0" y1="115" x2="230" y2="115" stroke="#DDD" />'
         this.writer = HanziWriter.create('hzchar',
-          char, {
-          charDataLoader: (char, onComplete) => {
+          hanzi, {
+          charDataLoader: (hanzi, onComplete) => {
             onComplete(data)
           },
           width: 230,
@@ -43,9 +43,9 @@ export default class hzwriter extends React.Component {
           <line x1="0" y1="115" x2="230" y2="115" stroke="#DDD" />
         </svg>
         <div className='hzwriter__links'>
-          {unit.pronunciation.map((p, i) => {
+          {unit.pinyin.map((p, i) => {
             return <div key={i} className={'link'}>&nbsp;&nbsp;<u><a href=" " onClick={e => { e.preventDefault()
-                    this.quizChar(unit.char[i])
+                    this.quizChar(unit.hanzi[i])
               }}>{p}</a></u></div>
           })}
         </div>
